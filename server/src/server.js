@@ -11,7 +11,7 @@ app.get("/", (req, res) => {
 
 app.get("/login", (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
-  res.send({ msg: "This is the login statement" });
+  res.send({ msg: "Quizmo" });
 });
 
 app.listen(port, () => {
