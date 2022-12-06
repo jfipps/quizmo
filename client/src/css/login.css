@@ -29,7 +29,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid blue;
+}
+
+.LoginTitle {
+  margin: 15px 0 15px 0;
+}
+
+.Labels {
+  margin-bottom: 15px;
 }
 
 .Labels > label {
