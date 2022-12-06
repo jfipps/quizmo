@@ -1,30 +1,15 @@
-import React, { useEffect, useState } from "react";
-import "../css/login.css";
+import React, { useEffect, useState, useContext } from "react";
+import { QuizmoContext } from "../context";
+import "../css/landing.css";
 
 export default function LoginModal(props) {
-  // state values
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  const APICall = async () => {
-    try {
-      const response = await fetch(
-        `http://localhost:5001/login?username=${username}&password=${password}`,
-        {
-          method: "GET",
-          mode: "cors",
-        }
-      );
-      const data = await response.json();
-      console.log(data.msg);
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  // context grab
+  const { username, setUsername, password, setPassword, AccountCreateCall } =
+    useContext(QuizmoContext);
 
   const HandleSubmit = (e) => {
     e.preventDefault();
-    APICall();
+    AccountCreateCall(username, password);
     setUsername("");
     setPassword("");
   };
@@ -32,7 +17,10 @@ export default function LoginModal(props) {
   return (
     <section className="LoginModal">
       <div className="LoginBox">
-        <h1 className="LoginTitle">Login</h1>
+        <div className="Selection">
+          <button className="SelectionButton">Login</button>
+          <button className="SelectionButton">Sign Up</button>
+        </div>
         <form className="LoginForm" onSubmit={HandleSubmit}>
           <div className="Labels">
             <label>Username:</label>
@@ -48,7 +36,7 @@ export default function LoginModal(props) {
           <div className="Labels">
             <label>Password:</label>
             <input
-              type="text"
+              type="password"
               name="password"
               value={password}
               onChange={(event) => {

@@ -1,14 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
-import LoginNav from "../components/LoginNav";
+import LandingDesc from "../components/LandingDesc";
 import LoginModal from "../components/LoginModal";
 
-function LoginPage() {
+export default function LandingPage() {
   return (
-    <section className="LoginLanding">
-      <LoginNav></LoginNav>
+    <section className="LandingPage">
+      <LandingDesc></LandingDesc>
       <LoginModal></LoginModal>
     </section>
   );
 }
-
-export default LoginPage;

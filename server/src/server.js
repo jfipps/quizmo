@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const { Server } = require("http");
 const User = require("./models/user");
 const path = require("path");
@@ -7,7 +8,14 @@ require("./db/mongoose");
 const app = express();
 const port = process.env.PORT || 5001;
 
+const corsOptions = {
+  origin: "*",
+  credentials: true,
+  optionSuccessStatus: 200,
+};
+
 app.use(express.json());
+app.use(cors(corsOptions));
 
 app.get("/", (req, res) => {
   res.send("This is a response");
@@ -20,8 +28,7 @@ app.get("/login", (req, res) => {
   res.send({ msg: "Received" });
 });
 
-app.post("/login", async (req, res) => {
-  console.log(req.body);
+app.post("/signup", async (req, res) => {
   const user = new User(req.body);
   try {
     await user.save();
