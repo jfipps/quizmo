@@ -6,10 +6,11 @@ const QuizmoProvider = ({ children }) => {
   // state values
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
 
   // functions
-  const AccountCreateCall = async (username, password) => {
-    const data = { username, password };
+  const AccountCreateCall = async (username, password, email) => {
+    const data = { username, password, email };
     try {
       const response = await fetch(`http://localhost:5001/signup`, {
         method: "POST",
@@ -30,6 +31,8 @@ const QuizmoProvider = ({ children }) => {
         setUsername,
         password,
         setPassword,
+        email,
+        setEmail,
         AccountCreateCall,
       }}
     >

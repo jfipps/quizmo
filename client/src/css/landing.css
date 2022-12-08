@@ -1,8 +1,7 @@
 :root {
   --background-main: #5cdb95;
   --font-navy: #05388c;
-  --font-eggshell: #edf5e1;
-  --font-eggshell2: #edf5e1;
+  --eggshell: #edf5e1;
   --background-dark: #379683;
   --background-light: #8ee4af;
 }
@@ -30,7 +29,7 @@
 .LandingDesc {
   margin-right: 25rem;
   max-width: 20rem;
-  color: var(--font-eggshell2);
+  color: var(--eggshell);
   font-weight: bold;
 }
 
@@ -45,16 +44,18 @@
 .LoginBox {
   display: flex;
   flex-direction: column;
-  background-color: #edf5e1;
+  min-height: 325px;
+  background-color: var(--eggshell);
   border: 1px solid black;
 }
 
 .LoginForm {
   display: flex;
   flex-direction: column;
+  height: 100%;
   justify-content: center;
   align-items: center;
-  padding: 0 25px 25px 25px;
+  padding: 0 5rem 5rem 5rem;
 }
 
 .Selection {
@@ -70,6 +71,10 @@
   padding: 0.5rem 0 0.5rem 0;
   border: none;
   background: none;
+}
+
+.SelectionButton:hover {
+  background: var(--background-light);
 }
 
 .Labels {
