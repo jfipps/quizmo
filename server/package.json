@@ -21,6 +21,7 @@
     "mongodb": "^4.12.1",
     "mongoose": "^6.8.0",
     "nodemon": "^2.0.20",
+    "postman-request": "^2.88.1-postman.31",
     "validator": "^13.7.0"
   }
 }

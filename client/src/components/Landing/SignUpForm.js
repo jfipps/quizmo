@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
-import { QuizmoContext } from "../context";
-import "../css/landing.css";
+import { QuizmoContext } from "../../context";
+import "../../css/landing.css";
 
 export default function SignUpForm(props) {
   // context grab

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
-import LandingDesc from "../components/LandingDesc";
-import LandingNav from "../components/LandingNav";
-import LoginModal from "../components/LoginModal";
+import LandingDesc from "../components/Landing/LandingDesc";
+import LandingNav from "../components/Landing/LandingNav";
+import LoginModal from "../components/Landing/LoginModal";
 import { QuizmoContext } from "../context";
 
 export default function LandingPage() {

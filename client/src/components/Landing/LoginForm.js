@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
-import { QuizmoContext } from "../context";
+import { QuizmoContext } from "../../context";
 import { useNavigate } from "react-router-dom";
-import "../css/landing.css";
+import "../../css/landing.css";
 
 export default function LoginForm(props) {
   // context grab
@@ -14,12 +14,13 @@ export default function LoginForm(props) {
     e.preventDefault();
     const data = await LoginCall(username, password);
     if (data.user) {
+      console.log("Logging in");
       navigate("/home");
     } else {
       navigate("/");
     }
-    // setUsername("");
-    // setPassword("");
+    setUsername("");
+    setPassword("");
   };
 
   return (

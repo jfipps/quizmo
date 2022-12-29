@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
-import { QuizmoContext } from "../context";
-import "../css/landing.css";
+import { QuizmoContext } from "../../context";
+import "../../css/landing.css";
 
 export default function LoginModal(props) {
   // state values

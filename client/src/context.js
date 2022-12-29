@@ -62,6 +62,16 @@ const QuizmoProvider = ({ children }) => {
     }
   };
 
+  const LogoutUser = async () => {
+    const res = await fetch("/users/logout", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return await res.json();
+  };
+
   // onLoads
   useEffect(() => {
     FetchUserAuth();
@@ -83,6 +93,7 @@ const QuizmoProvider = ({ children }) => {
         userSession,
         setUserSession,
         FetchUserAuth,
+        LogoutUser,
       }}
     >
       {children}

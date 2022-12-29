@@ -8,6 +8,7 @@ const path = require("path");
 const { auth, sessionCheck } = require("./middleware/auth");
 require("./db/mongoose");
 const userRouter = require("./routers/UserRouter");
+const quizRouter = require("./routers/QuizRouter");
 
 const app = express();
 const port = process.env.PORT || 5001;
@@ -45,6 +46,7 @@ app.use(
 
 // routers
 app.use(userRouter);
+app.use(quizRouter);
 
 app.get("/", (req, res) => {
   res.send("This is a response");
