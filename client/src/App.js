@@ -1,11 +1,14 @@
+import React, { useContext } from "react";
 import "./App.css";
-import LandingPage from "./pages/LandingPage";
+import { QuizmoContext } from "./context";
+import Paths from "./components/Paths";
 
 function App() {
+  // context grab
+  const { loading } = useContext(QuizmoContext);
+
   return (
-    <div className="App">
-      <LandingPage></LandingPage>
-    </div>
+    <div className="App">{loading ? <>Loading...</> : <Paths></Paths>}</div>
   );
 }
 
