@@ -14,7 +14,7 @@ export default function LoginForm(props) {
     e.preventDefault();
     const data = await LoginCall(username, password);
     if (data.user) {
-      console.log("Logging in");
+      console.log("Dones");
       navigate("/home");
     } else {
       navigate("/");

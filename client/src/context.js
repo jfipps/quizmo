@@ -29,21 +29,25 @@ const QuizmoProvider = ({ children }) => {
 
   const LoginCall = async (username, password) => {
     const data = { username, password };
-    const res = await fetch("/login", {
+    const res = await fetch("http://localhost:5001/login", {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
-    return await res.json();
+    const result = await res.json();
+    console.log(result);
+    return result;
   };
 
   const FetchUserAuth = async () => {
     try {
       setLoading(true);
-      const res = await fetch("/isAuth", {
+      const res = await fetch("http://localhost:5001/isAuth", {
         method: "GET",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
@@ -63,7 +67,7 @@ const QuizmoProvider = ({ children }) => {
   };
 
   const LogoutUser = async () => {
-    const res = await fetch("/users/logout", {
+    const res = await fetch("http://localhost:5001/users/logout", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

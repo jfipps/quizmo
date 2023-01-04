@@ -3,6 +3,7 @@ import "../../css/home.css";
 
 export default function HomeContent(props) {
   const [category, setCategory] = useState("arts_and_literature");
+  const [difficulty, setDifficulty] = useState("easy");
 
   const HandleSubmit = (e) => {
     e.preventDefault();
@@ -25,9 +26,23 @@ export default function HomeContent(props) {
             <option value="geography">Geography</option>
             <option value="history">History</option>
             <option value="music">Music</option>
+            <option value="science">Science</option>
+            <option value="society_and_culture">Society and Culture</option>
+            <option value="sport_and_leisure">Sports and Leisure</option>
           </select>
         </label>
-        <input type="submit" value="Submit" />
+        <label>
+          Difficulty
+          <select
+            value={difficulty}
+            onChange={(event) => setDifficulty(event.target.value)}
+          >
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </label>
+        <input type="submit" value="Start!" />
       </form>
     </section>
   );

@@ -9,6 +9,7 @@ const { auth, sessionCheck } = require("./middleware/auth");
 require("./db/mongoose");
 const userRouter = require("./routers/UserRouter");
 const quizRouter = require("./routers/QuizRouter");
+const { NONAME } = require("dns");
 
 const app = express();
 const port = process.env.PORT || 5001;
@@ -20,7 +21,7 @@ const mongoDBstore = new mongodbstore({
 });
 
 const corsOptions = {
-  origin: ["http://localhost:3000"],
+  origin: ["http://localhost:3000", "*"],
   credentials: true,
   optionSuccessStatus: 200,
 };
@@ -40,6 +41,7 @@ app.use(
     cookie: {
       httpOnly: false,
       maxAge: 3600000,
+      secure: false,
     },
   })
 );
