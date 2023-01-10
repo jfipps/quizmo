@@ -1,18 +1,23 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import "../../css/home.css";
 
 export default function HomeContent(props) {
   const [category, setCategory] = useState("arts_and_literature");
   const [difficulty, setDifficulty] = useState("easy");
 
-  const HandleSubmit = (e) => {
+  const navigate = useNavigate();
+
+  // gathers user choice for quiz topic and difficulty
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(category);
+    console.log(category + difficulty);
+    navigate(`/quiz/${category}/${difficulty}`);
   };
 
   return (
     <section className="HomeContent">
-      <form onSubmit={HandleSubmit}>
+      <form onSubmit={handleSubmit}>
         <label>
           Category:
           <select

@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
-import HomeNav from "../components/Home/HomeNav";
-import HomeContent from "../components/Home/HomeContent";
-import { Navigate } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
+import QuizQuestions from "../components/Quiz/QuizQuestions";
 import { QuizmoContext } from "../context";
 
 function HomePage(props) {
+  const { category, difficulty } = useParams();
+
   const [isLoading, setIsLoading] = useState(true);
   const [loggedIn, setLoggedIn] = useState();
 
@@ -29,22 +30,19 @@ function HomePage(props) {
     CheckAuth();
   }, []);
 
-  // loads home page if user session available, returns to login if not
   if (isLoading) {
     console.log("Loading");
     return <div>Loading...</div>;
   }
   if (loggedIn) {
     return (
-      <section className="HomePage">
-        <HomeNav></HomeNav>
-        <div className="HomeContents">
-          <HomeContent></HomeContent>
-        </div>
-      </section>
+      <QuizQuestions
+        category={category}
+        difficulty={difficulty}
+      ></QuizQuestions>
     );
   } else {
-    console.log("User session is not available");
+    console.log("User session not available");
     return <Navigate replace to="/login" />;
   }
 }

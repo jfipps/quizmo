@@ -5,16 +5,23 @@ import "../../css/landing.css";
 
 export default function LoginForm(props) {
   // context grab
-  const { username, setUsername, password, setPassword, LoginCall } =
-    useContext(QuizmoContext);
+  const {
+    username,
+    setUsername,
+    password,
+    setPassword,
+    LoginCall,
+    FetchUserAuth,
+  } = useContext(QuizmoContext);
 
   const navigate = useNavigate();
 
-  const HandleSubmit = async (e) => {
+  // form submit function
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const data = await LoginCall(username, password);
     if (data.user) {
-      console.log("Dones");
+      FetchUserAuth();
       navigate("/home");
     } else {
       navigate("/");
@@ -24,7 +31,7 @@ export default function LoginForm(props) {
   };
 
   return (
-    <form className="LoginForm" onSubmit={HandleSubmit}>
+    <form className="LoginForm" onSubmit={handleSubmit}>
       <div className="Labels">
         <label>Username:</label>
         <input

@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import NavbarBrand from "react-bootstrap/esm/NavbarBrand";
 import Navbar from "react-bootstrap/Navbar";
 
-export default function LandingNav(props) {
+export default function LoginNav(props) {
   return (
     <>
       <Navbar className="Navbar">

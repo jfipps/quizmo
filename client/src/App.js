@@ -8,7 +8,9 @@ function App() {
   const { loading } = useContext(QuizmoContext);
 
   return (
-    <div className="App">{loading ? <>Loading...</> : <Paths></Paths>}</div>
+    <div className="App">
+      <Paths></Paths>
+    </div>
   );
 }
 

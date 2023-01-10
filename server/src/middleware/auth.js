@@ -1,33 +1,11 @@
-const jwt = require("jsonwebtoken");
-const User = require("../models/user");
-
-const auth = async (req, res, next) => {
-  try {
-    const token = req.header("Authorization").replace("Bearer ", "");
-    const decoded = jwt.verify(token, "thisisasecret");
-    const user = await User.findOne({
-      _id: decoded._id,
-      "tokens.token": token,
-    });
-
-    if (!user) {
-      throw new Error();
-    }
-
-    req.token = token;
-    req.user = user;
-    next();
-  } catch (e) {
-    res.status(401).send({ error: "Please authenticate" });
-  }
-};
-
+// middleware function to check if user has an active session
 const sessionCheck = (req, res, next) => {
+  console.log(req.session);
   const { user } = req.session;
   if (!user) {
-    return res.status(401).send({ message: "Unauthorized" });
+    return res.status(401).send(req.session);
   }
   next();
 };
 
-module.exports = { auth, sessionCheck };
+module.exports = { sessionCheck };

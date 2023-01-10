@@ -1,17 +1,15 @@
 import React, { useEffect, useState, useContext } from "react";
-import LandingDesc from "../components/Landing/LandingDesc";
-import LandingNav from "../components/Landing/LandingNav";
+import LoginDesc from "../components/Landing/LoginDesc";
+import LoginNav from "../components/Landing/LoginNav";
 import LoginModal from "../components/Landing/LoginModal";
 import { QuizmoContext } from "../context";
 
 export default function LandingPage() {
-  const { FetchUserAuth } = useContext(QuizmoContext);
-
   return (
     <section className="LandingPage">
-      <LandingNav></LandingNav>
+      <LoginNav></LoginNav>
       <div className="LandingContents">
-        <LandingDesc></LandingDesc>
+        <LoginDesc></LoginDesc>
         <LoginModal></LoginModal>
       </div>
     </section>

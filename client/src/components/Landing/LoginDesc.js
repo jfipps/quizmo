@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function LandingDesc() {
+export default function LoginDesc() {
   return (
     <section className="LandingDesc">
       <h1>Welcome to Quizmo!</h1>

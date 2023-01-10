@@ -3,9 +3,6 @@ const cors = require("cors");
 const session = require("express-session");
 const mongodbstore = require("connect-mongodb-session")(session);
 const { Server } = require("http");
-const User = require("./models/user");
-const path = require("path");
-const { auth, sessionCheck } = require("./middleware/auth");
 require("./db/mongoose");
 const userRouter = require("./routers/UserRouter");
 const quizRouter = require("./routers/QuizRouter");
@@ -20,16 +17,6 @@ const mongoDBstore = new mongodbstore({
   collection: "mySessions",
 });
 
-const corsOptions = {
-  origin: ["http://localhost:3000", "*"],
-  credentials: true,
-  optionSuccessStatus: 200,
-};
-
-app.use(express.json());
-app.use(cors(corsOptions));
-app.set("trust proxy", 1);
-
 // session setup
 app.use(
   session({
@@ -40,42 +27,32 @@ app.use(
     resave: false,
     cookie: {
       httpOnly: false,
-      maxAge: 3600000,
+      maxAge: 360000000,
       secure: false,
     },
   })
 );
 
+// cors setup
+const corsOptions = {
+  origin: ["http://localhost:3000", "*"],
+  credentials: true,
+  optionSuccessStatus: 200,
+};
+
+app.use(express.json());
+app.use(cors(corsOptions));
+app.set("trust proxy", 1);
+
 // routers
 app.use(userRouter);
 app.use(quizRouter);
 
+// generic response
 app.get("/", (req, res) => {
   res.send("This is a response");
-});
-
-app.get("/home", sessionCheck, async (req, res) => {
-  try {
-    res.status(200).send("Home page");
-  } catch (e) {
-    res.status(400).send(e);
-  }
 });
 
 app.listen(port, () => {
   console.log("Server is up on port: " + port);
 });
-
-// const jwt = require("jsonwebtoken");
-
-// const myfunc = async () => {
-//   const token = jwt.sign({ _id: "abc123" }, "thisisasecret", {
-//     expiresIn: "7 days",
-//   });
-//   console.log(token);
-
-//   const data = jwt.verify(token, "thisisasecret");
-//   console.log(data);
-// };
-
-// myfunc();

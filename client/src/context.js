@@ -11,6 +11,9 @@ const QuizmoProvider = ({ children }) => {
   const [userSession, setUserSession] = useState();
 
   // functions
+
+  // accepts user input for account info
+  // sends to backend to create in mongodb
   const AccountCreateCall = async (username, password, email) => {
     const data = { username, password, email };
     try {
@@ -27,6 +30,8 @@ const QuizmoProvider = ({ children }) => {
     }
   };
 
+  // takes user entered username and password
+  // send to backend to check and returns result
   const LoginCall = async (username, password) => {
     const data = { username, password };
     const res = await fetch("http://localhost:5001/login", {
@@ -38,26 +43,30 @@ const QuizmoProvider = ({ children }) => {
       body: JSON.stringify(data),
     });
     const result = await res.json();
-    console.log(result);
     return result;
   };
 
+  // helper function to check if user has an active session
   const FetchUserAuth = async () => {
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:5001/isAuth", {
+      await fetch("http://localhost:5001/isAuth", {
         method: "GET",
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
+      }).then((res) => {
+        if (!res.ok) {
+          console.log("Not Found");
+          return setLoading(false);
+        }
+        res.json().then((data) => {
+          setUserSession(data);
+          console.log("User data");
+          console.log(userSession);
+        });
       });
-      if (!res.ok) {
-        console.log("Not Found");
-        return setLoading(false);
-      }
-      setUserSession(await res.json());
-      console.log(userSession);
       setLoading(false);
     } catch (e) {
       setLoading(false);
@@ -66,9 +75,11 @@ const QuizmoProvider = ({ children }) => {
     }
   };
 
+  // function to delete current user session if there is one
   const LogoutUser = async () => {
     const res = await fetch("http://localhost:5001/users/logout", {
       method: "GET",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
@@ -77,9 +88,9 @@ const QuizmoProvider = ({ children }) => {
   };
 
   // onLoads
-  useEffect(() => {
-    FetchUserAuth();
-  }, []);
+  // useEffect(() => {
+  //   FetchUserAuth();
+  // }, []);
 
   return (
     <QuizmoContext.Provider

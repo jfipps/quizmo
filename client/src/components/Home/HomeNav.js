@@ -10,14 +10,16 @@ export default function HomeNav(props) {
 
   const navigate = useNavigate();
 
+  // function to send user logout request to backend
   const HandleLogout = async () => {
     const data = await LogoutUser();
     if (data) {
+      console.log("Logging Out");
       console.log(data);
-      navigate("/");
+      navigate("/login");
     } else {
       console.log("No session to logout");
-      navigate("/");
+      navigate("/login");
     }
   };
 

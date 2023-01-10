@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -6,15 +6,22 @@ import {
   UseNavigate,
   Navigate,
 } from "react-router-dom";
-import LandingPage from "../pages/LandingPage";
+import { QuizmoContext } from "../context";
+import LoginPage from "../pages/LoginPage";
 import HomePage from "../pages/HomePage";
+import QuizPage from "../pages/QuizPage";
 
 export default function Paths() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<LandingPage></LandingPage>}></Route>
+        <Route path="/" element={<HomePage></HomePage>}></Route>
+        <Route path="/login" element={<LoginPage></LoginPage>}></Route>
         <Route path="/home" element={<HomePage></HomePage>}></Route>
+        <Route
+          path="/quiz/:category/:difficulty"
+          element={<QuizPage></QuizPage>}
+        ></Route>
       </Routes>
     </>
   );
