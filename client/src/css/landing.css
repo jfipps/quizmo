@@ -6,14 +6,46 @@
   --background-light: #8ee4af;
 }
 
-.Navbar {
-  background-color: var(--background-main);
+/* reset */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.Brand,
-.NavLinks {
-  font-weight: bold;
-  color: var(--font-navy) !important;
+img {
+  max-height: 250px;
+  max-width: 250px;
+}
+
+.LandingPage {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  min-width: 100vw;
+  border: 4px solid green;
+}
+
+.LoginModal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  min-height: 100%;
+  border: 2px solid blue;
+}
+
+.LandingDesc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  min-height: 100%;
+  border: 2px solid red;
+}
+
+/* .Navbar {
+  background-color: var(--background-main);
 }
 
 .LandingContents {
@@ -85,4 +117,4 @@
 
 .Labels > label {
   min-width: 100px;
-}
+} */

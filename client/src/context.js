@@ -87,6 +87,26 @@ const QuizmoProvider = ({ children }) => {
     return await res.json();
   };
 
+  // function to write user score to DB
+  const WriteScore = async (username, category, difficulty, score) => {
+    const data = { username, category, difficulty, score };
+    await fetch("http://localhost:5001/addscore", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => {
+        res.json().then((data) => {
+          console.log(data);
+        });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
   // onLoads
   // useEffect(() => {
   //   FetchUserAuth();
@@ -109,6 +129,7 @@ const QuizmoProvider = ({ children }) => {
         setUserSession,
         FetchUserAuth,
         LogoutUser,
+        WriteScore,
       }}
     >
       {children}

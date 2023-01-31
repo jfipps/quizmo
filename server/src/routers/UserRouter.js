@@ -65,7 +65,7 @@ router.get("/users", sessionCheck, async (req, res) => {
 // helper route to check user authentication. returns to front end
 router.get("/isAuth", (req, res) => {
   if (req.session.user) {
-    console.log(req.session);
+    console.log(req.session.user);
     res.json({ user: req.session.user, loggedIn: true });
   } else {
     console.log("No User");

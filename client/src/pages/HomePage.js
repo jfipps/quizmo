@@ -5,6 +5,7 @@ import { Navigate } from "react-router-dom";
 import { QuizmoContext } from "../context";
 
 function HomePage(props) {
+  const { setUsername } = useContext(QuizmoContext);
   const [isLoading, setIsLoading] = useState(true);
   const [loggedIn, setLoggedIn] = useState();
 
@@ -16,13 +17,20 @@ function HomePage(props) {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then((res) => {
-      res.json().then((data) => {
-        console.log(data);
-        setLoggedIn(data.loggedIn);
-        setIsLoading(false);
+    })
+      .then((res) => {
+        res.json().then((data) => {
+          console.log(data);
+          setLoggedIn(data.loggedIn);
+          if (data.loggedIn) {
+            setUsername(data.user.username);
+          }
+          setIsLoading(false);
+        });
+      })
+      .catch((e) => {
+        console.log(e);
       });
-    });
   };
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
-import { QuizmoContext } from "../../context";
+import QuizmoImage from "../../Resources/Quizmo.png";
 import "../../css/landing.css";
 
 export default function LoginModal(props) {
@@ -10,6 +10,7 @@ export default function LoginModal(props) {
 
   return (
     <section className="LoginModal">
+      <img src={QuizmoImage} alt="Quizmo" />
       <div className="LoginBox">
         <div className="Selection">
           <button

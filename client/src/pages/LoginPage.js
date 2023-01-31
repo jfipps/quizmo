@@ -7,11 +7,8 @@ import { QuizmoContext } from "../context";
 export default function LandingPage() {
   return (
     <section className="LandingPage">
-      <LoginNav></LoginNav>
-      <div className="LandingContents">
-        <LoginDesc></LoginDesc>
-        <LoginModal></LoginModal>
-      </div>
+      <LoginModal></LoginModal>
+      <LoginDesc></LoginDesc>
     </section>
   );
 }

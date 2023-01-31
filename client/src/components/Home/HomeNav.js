@@ -4,8 +4,9 @@ import Container from "react-bootstrap/Container";
 import NavbarBrand from "react-bootstrap/esm/NavbarBrand";
 import Navbar from "react-bootstrap/Navbar";
 import { QuizmoContext } from "../../context";
+import "../../css/home.css";
 
-export default function HomeNav(props) {
+export default function HomeNav() {
   const { LogoutUser } = useContext(QuizmoContext);
 
   const navigate = useNavigate();
@@ -31,7 +32,10 @@ export default function HomeNav(props) {
             Quizmo
           </Navbar.Brand>
           <div className="justify-content-end">
-            <Navbar.Brand href="/" className="NavLinks">
+            <Navbar.Brand
+              onClick={() => navigate("/highscores")}
+              className="NavLinks"
+            >
               High Scores
             </Navbar.Brand>
             <NavbarBrand href="/" className="NavLinks">

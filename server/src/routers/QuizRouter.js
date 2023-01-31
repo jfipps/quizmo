@@ -1,7 +1,9 @@
 const express = require("express");
 const request = require("postman-request");
+const Score = require("../models/quizscores");
 const { Server } = require("http");
 const { callbackify } = require("util");
+const { sessionCheck } = require("../middleware/auth");
 require("../db/mongoose");
 const router = new express.Router();
 
@@ -23,6 +25,38 @@ router.post("/quizquestions", (req, res) => {
       res.send(body);
     }
   });
+});
+
+// writes score to DB
+router.post("/addscore", sessionCheck, async (req, res) => {
+  const score = new Score(req.body);
+  try {
+    await score.save();
+    res.status(201).send({ score });
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
+
+// get personal scores from DB
+router.post("/getmyscores", sessionCheck, async (req, res) => {
+  console.log(req.session);
+  try {
+    const myScores = await Score.find({ username: { $eq: req.body.username } });
+    res.send(myScores);
+  } catch (e) {
+    res.status(500).send(e);
+  }
+});
+
+// get all scores from DB
+router.post("/getallscores", async (req, res) => {
+  try {
+    const allScores = await Score.find({});
+    res.send(allScores);
+  } catch (e) {
+    res.status(500).send(e);
+  }
 });
 
 module.exports = router;
