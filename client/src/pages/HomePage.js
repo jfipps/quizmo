@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 import { QuizmoContext } from "../context";
 
 function HomePage(props) {
-  const { setUsername } = useContext(QuizmoContext);
+  const { setLoginUsername } = useContext(QuizmoContext);
   const [isLoading, setIsLoading] = useState(true);
   const [loggedIn, setLoggedIn] = useState();
 
@@ -23,13 +23,14 @@ function HomePage(props) {
           console.log(data);
           setLoggedIn(data.loggedIn);
           if (data.loggedIn) {
-            setUsername(data.user.username);
+            setLoginUsername(data.user.username);
           }
           setIsLoading(false);
         });
       })
       .catch((e) => {
         console.log(e);
+        setIsLoading(false);
       });
   };
 

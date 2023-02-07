@@ -14,7 +14,7 @@ export default function SignUpForm(props) {
     AccountCreateCall,
   } = useContext(QuizmoContext);
 
-  const HandleSubmit = (e) => {
+  const handleSignUpSubmit = (e) => {
     e.preventDefault();
     AccountCreateCall(username, password, email);
     setUsername("");
@@ -22,41 +22,44 @@ export default function SignUpForm(props) {
   };
 
   return (
-    <form className="LoginForm" onSubmit={HandleSubmit}>
-      <div className="Labels">
-        <label>Email:</label>
-        <input
-          type="text"
-          name="email"
-          value={email}
-          onChange={(event) => {
-            setEmail(event.target.value);
-          }}
-        />
-      </div>
-      <div className="Labels">
-        <label>Username:</label>
-        <input
-          type="text"
-          name="username"
-          value={username}
-          onChange={(event) => {
-            setUsername(event.target.value);
-          }}
-        />
-      </div>
-      <div className="Labels">
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={(event) => {
-            setPassword(event.target.value);
-          }}
-        />
-      </div>
-      <input type="submit" value="Submit" />
-    </form>
+    // <form className="LoginForm" onSubmit={HandleSubmit}>
+    //   <div className="Labels">
+    //     <label>Email:</label>
+    //     <input
+    //       type="text"
+    //       name="email"
+    //       value={email}
+    //       onChange={(event) => {
+    //         setEmail(event.target.value);
+    //       }}
+    //     />
+    //   </div>
+    //   <div className="Labels">
+    //     <label>Username:</label>
+    //     <input
+    //       type="text"
+    //       name="username"
+    //       value={username}
+    //       onChange={(event) => {
+    //         setUsername(event.target.value);
+    //       }}
+    //     />
+    //   </div>
+    //   <div className="Labels">
+    //     <label>Password:</label>
+    //     <input
+    //       type="password"
+    //       name="password"
+    //       value={password}
+    //       onChange={(event) => {
+    //         setPassword(event.target.value);
+    //       }}
+    //     />
+    //   </div>
+    //   <input type="submit" value="Submit" />
+    // </form>
+    <>
+      <section className="SignUp"></section>
+    </>
   );
 }

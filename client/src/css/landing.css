@@ -1,7 +1,8 @@
 :root {
   --background-main: #5cdb95;
   --font-navy: #05388c;
-  --eggshell: #edf5e1;
+  --login-background: #8c92a5;
+  --login-modal-background: #b9bfd3;
   --background-dark: #379683;
   --background-light: #8ee4af;
 }
@@ -13,108 +14,150 @@
   box-sizing: border-box;
 }
 
-img {
-  max-height: 250px;
-  max-width: 250px;
-}
-
 .LandingPage {
   display: flex;
   flex-direction: row;
   min-height: 100vh;
   min-width: 100vw;
-  border: 4px solid green;
 }
 
-.LoginModal {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 50%;
-  min-height: 100%;
-  border: 2px solid blue;
+#chk {
+  display: none;
 }
 
-.LandingDesc {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 50%;
-  min-height: 100%;
-  border: 2px solid red;
-}
+/* left side of landing page */
 
-/* .Navbar {
-  background-color: var(--background-main);
-}
-
-.LandingContents {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--background-main);
-}
-
-.LandingDesc {
-  margin-right: 25rem;
-  max-width: 20rem;
-  color: var(--eggshell);
-  font-weight: bold;
-}
-
-.LoginModal {
+.LandingLeftSide {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  width: 50%;
+  min-height: 100%;
+  background-color: var(--login-background);
 }
 
 .LoginBox {
   display: flex;
   flex-direction: column;
-  min-height: 325px;
-  background-color: var(--eggshell);
-  border: 1px solid black;
+  justify-content: flex-start;
+  width: 50%;
+  height: 50%;
+  border-radius: 2rem;
+  background-color: var(--login-modal-background);
+  overflow: hidden;
+}
+
+.LoginSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
 }
 
 .LoginForm {
   display: flex;
   flex-direction: column;
-  height: 100%;
   justify-content: center;
   align-items: center;
-  padding: 0 5rem 5rem 5rem;
-}
-
-.Selection {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin-bottom: 2rem;
-}
-
-.SelectionButton {
-  height: 100%;
+  position: sticky;
+  height: 70%;
   width: 100%;
-  padding: 0.5rem 0 0.5rem 0;
-  border: none;
-  background: none;
 }
 
-.SelectionButton:hover {
-  background: var(--background-light);
+.LoginForm label {
+  display: flex;
+  font-weight: bold;
+  justify-content: center;
+  font-size: 2em;
+  margin: 3rem 3rem 3rem 3rem;
+  transition: 0.5s ease-in-out;
+}
+
+.LoginForm label:hover {
+  cursor: pointer;
+}
+
+.LoginForm form {
+  width: 100%;
+}
+
+.SubmitButton {
+  height: 15%;
+  width: 50%;
+  border-radius: 2rem;
+  border: none;
+  background-color: #05388c;
+  color: white;
+}
+
+.SubmitButton:hover {
+  background-color: #0844a4;
 }
 
 .Labels {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 15px;
+  padding-bottom: 2rem;
+  width: 100%;
 }
 
-.Labels > label {
-  min-width: 100px;
-} */
+.Labels input {
+  border: none;
+  padding: 0.75rem;
+  width: 50%;
+  border-radius: 2rem;
+}
+
+.SignUpForm {
+  min-height: 100%;
+  width: 100%;
+  background-color: #05388c;
+  border-radius: 60% / 10%;
+  transform: translateY(30%);
+  transition: 0.8s ease-in-out;
+}
+
+.SignUpForm form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.SignUpForm label {
+  display: flex;
+  font-weight: bold;
+  justify-content: center;
+  font-size: 3em;
+  color: #eee;
+  padding: 2rem 3rem 3.5rem 3rem;
+  transform: scale(0.6);
+  transition: 0.5s ease-in-out;
+}
+
+.SignUpForm label:hover {
+  cursor: pointer;
+}
+
+#chk:checked ~ .SignUpForm {
+  transform: translateY(-30%);
+}
+
+#chk:checked ~ .SignUpForm label {
+  transform: scale(1);
+}
+
+#chk:checked ~ .LoginForm label {
+  transform: scale(0.6);
+}
+
+/* right side of landing page */
+.LandingDesc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  min-height: 100%;
+  color: white;
+  background: #05388c;
+}

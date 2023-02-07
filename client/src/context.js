@@ -4,9 +4,11 @@ const QuizmoContext = React.createContext();
 
 const QuizmoProvider = ({ children }) => {
   // state values
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
+  const [loginUsername, setLoginUsername] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const [signUpUsername, setSignUpUsername] = useState("");
+  const [signUpPassword, setSignUpPassword] = useState("");
+  const [signUpEmail, setSignUpEmail] = useState("");
   const [loading, setLoading] = useState(true);
   const [userSession, setUserSession] = useState();
 
@@ -115,12 +117,16 @@ const QuizmoProvider = ({ children }) => {
   return (
     <QuizmoContext.Provider
       value={{
-        username,
-        setUsername,
-        password,
-        setPassword,
-        email,
-        setEmail,
+        loginUsername,
+        setLoginUsername,
+        loginPassword,
+        setLoginPassword,
+        signUpUsername,
+        setSignUpUsername,
+        signUpPassword,
+        setSignUpPassword,
+        signUpEmail,
+        setSignUpEmail,
         AccountCreateCall,
         LoginCall,
         loading,
