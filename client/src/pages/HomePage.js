@@ -3,6 +3,7 @@ import HomeNav from "../components/Home/HomeNav";
 import HomeContent from "../components/Home/HomeContent";
 import { Navigate } from "react-router-dom";
 import { QuizmoContext } from "../context";
+import "../css/home.css";
 
 function HomePage(props) {
   const { setLoginUsername } = useContext(QuizmoContext);
@@ -45,12 +46,14 @@ function HomePage(props) {
   }
   if (loggedIn) {
     return (
-      <section className="HomePage">
+      <>
         <HomeNav></HomeNav>
-        <div className="HomeContents">
-          <HomeContent></HomeContent>
-        </div>
-      </section>
+        <section className="HomePage">
+          <div className="HomeContents">
+            <HomeContent></HomeContent>
+          </div>
+        </section>
+      </>
     );
   } else {
     console.log("User session is not available");

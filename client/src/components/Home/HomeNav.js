@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import Container from "react-bootstrap/Container";
-import NavbarBrand from "react-bootstrap/esm/NavbarBrand";
-import Navbar from "react-bootstrap/Navbar";
 import { QuizmoContext } from "../../context";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { GrClose } from "react-icons/gr";
 import "../../css/home.css";
 
 export default function HomeNav() {
   const { LogoutUser } = useContext(QuizmoContext);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -26,27 +26,23 @@ export default function HomeNav() {
 
   return (
     <>
-      <Navbar className="Navbar">
-        <Container>
-          <Navbar.Brand href="/" className="Brand">
-            Quizmo
-          </Navbar.Brand>
-          <div className="justify-content-end">
-            <Navbar.Brand
-              onClick={() => navigate("/highscores")}
-              className="NavLinks"
-            >
-              High Scores
-            </Navbar.Brand>
-            <NavbarBrand href="/" className="NavLinks">
-              About
-            </NavbarBrand>
-            <NavbarBrand className="NavLinks" onClick={() => HandleLogout()}>
-              Logout
-            </NavbarBrand>
-          </div>
-        </Container>
-      </Navbar>
+      <input type="checkbox" id="chk" aria-hidden="true"></input>
+      <div className="MenuOverlay">
+        <button>High Scores</button>
+        <button>Friends</button>
+        <button>About</button>
+        <button onClick={() => HandleLogout()}>Logout</button>
+      </div>
+      <div className="MenuNavbar">
+        <label className="Open" for="chk">
+          <GiHamburgerMenu
+            size={32}
+            className="MenuButton"
+            color={menuOpen ? "white" : "black"}
+            onClick={() => setMenuOpen(!menuOpen)}
+          ></GiHamburgerMenu>
+        </label>
+      </div>
     </>
   );
 }

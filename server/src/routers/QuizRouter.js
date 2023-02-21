@@ -40,9 +40,10 @@ router.post("/addscore", sessionCheck, async (req, res) => {
 
 // get personal scores from DB
 router.post("/getmyscores", sessionCheck, async (req, res) => {
-  console.log(req.session);
   try {
+    console.log(req.body);
     const myScores = await Score.find({ username: { $eq: req.body.username } });
+    console.log(myScores);
     res.send(myScores);
   } catch (e) {
     res.status(500).send(e);

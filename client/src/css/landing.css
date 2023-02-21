@@ -1,5 +1,5 @@
 :root {
-  --background-main: #5cdb95;
+  --background-main: #05388c;
   --font-navy: #05388c;
   --login-background: #8c92a5;
   --login-modal-background: #b9bfd3;
@@ -159,5 +159,5 @@
   width: 50%;
   min-height: 100%;
   color: white;
-  background: #05388c;
+  background: var(--background-main);
 }

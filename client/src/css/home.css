@@ -1,12 +1,125 @@
 :root {
-  --background-main: #5cdb95;
+  --background-main: #05388c;
   --font-navy: #05388c;
-  --eggshell: #edf5e1;
+  --login-background: #8c92a5;
+  --login-modal-background: #b9bfd3;
   --background-dark: #379683;
   --background-light: #8ee4af;
 }
 
-.Navbar {
+/* reset */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.HomePage {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* sidebar content */
+
+.MenuNavbar {
+  position: absolute;
+  padding-top: 2rem;
+  padding-right: 2rem;
+  top: 0px;
+  right: 0px;
+}
+
+.MenuButton {
+  transition: 0.4s ease-in-out;
+}
+
+.MenuButton:hover {
+  cursor: pointer;
+  transform: scale(1.4);
+}
+
+.MenuOverlay {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-100%);
+  background-color: #05388c;
+  overflow: hidden;
+  transition: 0.8s ease-in-out;
+}
+
+.MenuOverlay button {
+  background: none;
+  border: none;
+  color: #fff;
+  width: 50%;
+  margin: 1rem;
+  font-size: 3rem;
+}
+
+.MenuOverlay button:hover {
+  color: var(--login-background);
+}
+
+#chk:checked ~ .MenuOverlay {
+  transform: translateY(0%);
+}
+
+/* Main Page */
+
+.HomeContents {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+}
+
+.RecentScores {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 50%;
+  justify-content: center;
+}
+
+.HomeQuizSelect {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+.QuizSelectForm {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid blue;
+}
+
+.QuizSelectForm select {
+  width: 20rem;
+  padding: 1rem 0.5rem 1rem 0.5rem;
+  margin: 1rem;
+}
+
+.QuizSelectForm input {
+  width: 20rem;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+/* .Navbar {
   background-color: var(--background-main);
 }
 
@@ -28,4 +141,4 @@
   justify-content: center;
   align-items: center;
   background-color: var(--background-main);
-}
+} */
