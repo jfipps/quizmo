@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import QuizQuestions from "../components/Quiz/QuizQuestions";
+import HomeNav from "../components/Home/HomeNav";
 import { QuizmoContext } from "../context";
+import "../css/quiz.css";
 
 function HomePage(props) {
   const { category, difficulty } = useParams();
@@ -36,10 +38,13 @@ function HomePage(props) {
   }
   if (loggedIn) {
     return (
-      <QuizQuestions
-        category={category}
-        difficulty={difficulty}
-      ></QuizQuestions>
+      <>
+        <HomeNav></HomeNav>
+        <QuizQuestions
+          category={category}
+          difficulty={difficulty}
+        ></QuizQuestions>
+      </>
     );
   } else {
     console.log("User session not available");

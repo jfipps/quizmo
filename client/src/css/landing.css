@@ -3,8 +3,11 @@
   --font-navy: #05388c;
   --login-background: #8c92a5;
   --login-modal-background: #b9bfd3;
-  --background-dark: #379683;
-  --background-light: #8ee4af;
+  --background-theme: #2c3333;
+  --homepage-box-background: rgba(8, 4, 36, 0.8);
+  --homepage-box-background-test: rgba(46, 79, 79, 0.8);
+  --homepage-box-background-no-opac: rgba(8, 4, 36, 1);
+  --table-hover: rgba(23, 12, 97, 0.8);
 }
 
 /* reset */
@@ -19,6 +22,8 @@
   flex-direction: row;
   min-height: 100vh;
   min-width: 100vw;
+  justify-content: center;
+  background-color: var(--background-theme);
 }
 
 #chk {
@@ -34,7 +39,7 @@
   align-items: center;
   width: 50%;
   min-height: 100%;
-  background-color: var(--login-background);
+  /* background-color: var(--login-background); */
 }
 
 .LoginBox {
@@ -44,7 +49,8 @@
   width: 50%;
   height: 50%;
   border-radius: 2rem;
-  background-color: var(--login-modal-background);
+  border: 2px solid #fff;
+  background-color: var(--homepage-box-background-test);
   overflow: hidden;
 }
 
@@ -73,6 +79,7 @@
   font-size: 2em;
   margin: 3rem 3rem 3rem 3rem;
   transition: 0.5s ease-in-out;
+  color: #fff;
 }
 
 .LoginForm label:hover {
@@ -87,13 +94,13 @@
   height: 15%;
   width: 50%;
   border-radius: 2rem;
-  border: none;
-  background-color: #05388c;
+  border: 2px solid #000;
+  background-color: #0e8388;
   color: white;
 }
 
 .SubmitButton:hover {
-  background-color: #0844a4;
+  background-color: #479194;
 }
 
 .Labels {
@@ -102,7 +109,7 @@
 }
 
 .Labels input {
-  border: none;
+  border: 2px solid #000;
   padding: 0.75rem;
   width: 50%;
   border-radius: 2rem;
@@ -111,7 +118,7 @@
 .SignUpForm {
   min-height: 100%;
   width: 100%;
-  background-color: #05388c;
+  background-color: #fff;
   border-radius: 60% / 10%;
   transform: translateY(30%);
   transition: 0.8s ease-in-out;
@@ -129,18 +136,27 @@
   font-weight: bold;
   justify-content: center;
   font-size: 3em;
-  color: #eee;
-  padding: 2rem 3rem 3.5rem 3rem;
+  color: #000;
+  padding: 1rem 3rem 3.5rem 3rem;
   transform: scale(0.6);
   transition: 0.5s ease-in-out;
 }
 
 .SignUpForm label:hover {
   cursor: pointer;
+  transform: scale(0.9);
+}
+
+.SignUpForm input {
+  border: none;
+  padding: 0.75rem;
+  width: 50%;
+  border-radius: 2rem;
+  border: 2px solid #000;
 }
 
 #chk:checked ~ .SignUpForm {
-  transform: translateY(-30%);
+  transform: translateY(-35%);
 }
 
 #chk:checked ~ .SignUpForm label {
@@ -159,5 +175,5 @@
   width: 50%;
   min-height: 100%;
   color: white;
-  background: var(--background-main);
+  /* background: var(--background-main); */
 }

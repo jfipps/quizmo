@@ -38,7 +38,7 @@ export default function HomeNav() {
           <GiHamburgerMenu
             size={32}
             className="MenuButton"
-            color={menuOpen ? "white" : "black"}
+            color={menuOpen ? "white" : "white"}
             onClick={() => setMenuOpen(!menuOpen)}
           ></GiHamburgerMenu>
         </label>

@@ -3,8 +3,12 @@
   --font-navy: #05388c;
   --login-background: #8c92a5;
   --login-modal-background: #b9bfd3;
-  --background-dark: #379683;
-  --background-light: #8ee4af;
+  --background-theme: #2c3333;
+  --homepage-box-background: rgba(8, 4, 36, 0.8);
+  --homepage-box-background-test: rgba(46, 79, 79, 0.8);
+  --homepage-box-background-no-opac: rgba(8, 4, 36, 1);
+  --menu-overlay-theme: rgb(30, 41, 41);
+  --table-hover: rgba(23, 12, 97, 0.8);
 }
 
 /* reset */
@@ -19,6 +23,10 @@
   flex-direction: column;
   height: 100vh;
   width: 100vw;
+  background-color: var(--background-theme);
+  /* background-image: url(../Resources/HomeBackground3.jpg);
+  background-repeat: no-repeat;
+  background-size: cover; */
 }
 
 /* sidebar content */
@@ -49,7 +57,7 @@
   justify-content: center;
   align-items: center;
   transform: translateY(-100%);
-  background-color: #05388c;
+  background-color: var(--menu-overlay-theme);
   overflow: hidden;
   transition: 0.8s ease-in-out;
 }
@@ -76,8 +84,17 @@
 .HomeContents {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   height: 100%;
   width: 100%;
+}
+
+/* Left Side */
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
 }
 
 .RecentScores {
@@ -86,9 +103,69 @@
   height: 100%;
   width: 50%;
   justify-content: center;
+  align-items: center;
+  color: #fff;
 }
 
-.HomeQuizSelect {
+.RecentScoresModal {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  width: 50%;
+  border-radius: 2rem;
+  border: 2px solid #fff;
+  background-color: var(--homepage-box-background-test);
+}
+
+.RecentScoresModal h1 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: #fff;
+  font-weight: bold;
+}
+
+.RecentScoresBox {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  margin-top: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.RecentScoresTable {
+  height: 100%;
+  width: 100%;
+}
+
+.RecentScoresTable th {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  text-align: left;
+}
+
+.RecentScoresTable tr:not(:first-child):hover {
+  background-color: var(--table-hover);
+}
+
+tr:last-child td:first-child {
+  border-bottom-left-radius: 2rem;
+}
+tr:last-child td:last-child {
+  border-bottom-right-radius: 2rem;
+}
+
+.RecentScoresTable td,
+.RecentScoresTable th {
+  padding: 0.5rem;
+  text-align: center;
+  border-top: 1px solid #fff;
+}
+
+/* Right Side */
+
+.QuizSelect {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -97,48 +174,52 @@
   align-items: center;
 }
 
+.QuizSelectModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 2rem;
+  border: 2px solid #fff;
+  background-color: var(--homepage-box-background-test);
+  height: 50%;
+  width: 50%;
+}
+
+.QuizSelectModal h1 {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  color: #fff;
+  font-weight: bold;
+}
+
 .QuizSelectForm {
   display: flex;
   flex-direction: column;
+  margin-top: 2.5rem;
   height: 50%;
   width: 50%;
   justify-content: center;
   align-items: center;
-  border: 1px solid blue;
 }
 
 .QuizSelectForm select {
   width: 20rem;
   padding: 1rem 0.5rem 1rem 0.5rem;
   margin: 1rem;
+  border-radius: 2rem;
 }
 
 .QuizSelectForm input {
   width: 20rem;
   padding: 1rem;
   margin: 1rem;
+  border-radius: 2rem;
 }
 
-/* .Navbar {
-  background-color: var(--background-main);
+.InError {
+  color: #fff;
 }
 
-.Brand,
-.NavLinks {
-  font-weight: bold;
-  color: var(--font-navy) !important;
+.NotInError {
+  display: none;
 }
-
-.NavLinks:hover {
-  cursor: pointer;
-}
-
-.HomeContent {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--background-main);
-} */

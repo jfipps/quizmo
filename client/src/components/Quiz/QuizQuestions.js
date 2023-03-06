@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { QuizmoContext } from "../../context";
 import { useNavigate } from "react-router-dom";
-import "../../css/home.css";
+import "../../css/quiz.css";
 
 export default function QuizQuestions({ category, difficulty }) {
   // context grab
@@ -79,20 +79,26 @@ export default function QuizQuestions({ category, difficulty }) {
     return <div>Loading...</div>;
   } else {
     return (
-      <>
+      <section className="QuizQuestion">
         {isPlaying ? (
-          <div className="questions">
+          <div className="Question">
             <h3>{questions[currentQuestion].question}</h3>
-            {answers.map((answer, index) => {
-              return (
-                <button
-                  onClick={() => handleAnswerButtonClick(answer.isCorrect)}
-                  key={index}
-                >
-                  {answer.answer}
-                </button>
-              );
-            })}
+            <div className="AnswerButtons">
+              {answers.map((answer, index) => {
+                return (
+                  <button
+                    onClick={() => handleAnswerButtonClick(answer.isCorrect)}
+                    key={index}
+                    className="AnswerButton"
+                  >
+                    {answer.answer}
+                  </button>
+                );
+              })}
+            </div>
+            <h4 className="ProgressTracker">
+              {currentQuestion + 1} / {questions.length}
+            </h4>
           </div>
         ) : (
           <>
@@ -100,7 +106,7 @@ export default function QuizQuestions({ category, difficulty }) {
             <button onClick={() => navigate("/")}>Home</button>
           </>
         )}
-      </>
+      </section>
     );
   }
 }

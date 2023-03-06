@@ -37,15 +37,31 @@ export default function HomeRecentScores() {
 
   return (
     <section className="RecentScores">
-      {!isLoading &&
-        myScores.map((score, index) => {
-          return (
-            <article key={index}>
-              {score.username} - {score.category} - {score.difficulty} -{" "}
-              {score.score}/10
-            </article>
-          );
-        })}
+      <div className="RecentScoresModal">
+        <h1>Recent Scores</h1>
+        <div className="RecentScoresBox">
+          <table className="RecentScoresTable">
+            <tr>
+              <th>Date</th>
+              <th>Category</th>
+              <th>Difficulty</th>
+              <th>Score</th>
+            </tr>
+            {!isLoading &&
+              myScores.map((score, index) => {
+                var quizDate = new Date(score.createdAt);
+                return (
+                  <tr key={index}>
+                    <td>{quizDate.toLocaleDateString()}</td>
+                    <td>{score.category}</td>
+                    <td>{score.difficulty}</td>
+                    <td>{score.score}/10</td>
+                  </tr>
+                );
+              })}
+          </table>
+        </div>
+      </div>
     </section>
   );
 }

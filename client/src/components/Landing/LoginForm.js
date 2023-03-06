@@ -122,7 +122,7 @@ export default function LoginForm(props) {
             </div>
             <div className="Labels">
               <input
-                className="SignUpSubmitButton"
+                className="SubmitButton"
                 form="signupform"
                 type="submit"
                 value="Sign Up"

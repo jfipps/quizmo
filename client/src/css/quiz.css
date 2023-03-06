@@ -1,0 +1,67 @@
+:root {
+  --background-main: #05388c;
+  --font-navy: #05388c;
+  --login-background: #8c92a5;
+  --login-modal-background: #b9bfd3;
+  --background-theme: #2c3333;
+  --homepage-box-background: rgba(8, 4, 36, 0.8);
+  --homepage-box-background-test: rgba(46, 79, 79, 0.8);
+  --homepage-box-background-no-opac: rgba(8, 4, 36, 1);
+  --table-hover: rgba(23, 12, 97, 0.8);
+}
+
+/* reset */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.QuizQuestion {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--background-theme);
+  justify-content: center;
+  align-items: center;
+}
+
+.Question {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  height: 50%;
+  border-radius: 2rem;
+  border: 2px solid #fff;
+  background-color: var(--homepage-box-background-test);
+  padding: 2rem;
+}
+
+.ProgressTracker {
+  color: white;
+}
+
+.Question h3 {
+  color: #fff;
+  font-weight: bold;
+}
+
+.AnswerButtons {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  height: 100%;
+  justify-content: space-around;
+}
+
+.AnswerButton {
+  padding: 1rem;
+  border-radius: 2rem;
+  font-size: 1.5rem;
+}
+
+.AnswerButton:hover {
+  background-color: var(--login-modal-background);
+}
