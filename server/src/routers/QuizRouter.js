@@ -30,6 +30,7 @@ router.post("/quizquestions", (req, res) => {
 // writes score to DB
 router.post("/addscore", sessionCheck, async (req, res) => {
   const score = new Score(req.body);
+  console.log(score);
   try {
     await score.save();
     res.status(201).send({ score });
@@ -42,8 +43,9 @@ router.post("/addscore", sessionCheck, async (req, res) => {
 router.post("/getmyscores", sessionCheck, async (req, res) => {
   try {
     console.log(req.body);
-    const myScores = await Score.find({ username: { $eq: req.body.username } });
-    console.log(myScores);
+    const myScores = await (
+      await Score.find({ username: { $eq: req.body.username } })
+    ).reverse();
     res.send(myScores);
   } catch (e) {
     res.status(500).send(e);
@@ -53,7 +55,7 @@ router.post("/getmyscores", sessionCheck, async (req, res) => {
 // get all scores from DB
 router.post("/getallscores", async (req, res) => {
   try {
-    const allScores = await Score.find({});
+    const allScores = await (await Score.find({})).reverse();
     res.send(allScores);
   } catch (e) {
     res.status(500).send(e);

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import QuizQuestions from "../components/Quiz/QuizQuestions";
 import HomeNav from "../components/Home/HomeNav";
-import { QuizmoContext } from "../context";
+import Loader from "../components/Loader";
 import "../css/quiz.css";
 
 function HomePage(props) {
@@ -33,8 +33,7 @@ function HomePage(props) {
   }, []);
 
   if (isLoading) {
-    console.log("Loading");
-    return <div>Loading...</div>;
+    return <Loader></Loader>;
   }
   if (loggedIn) {
     return (

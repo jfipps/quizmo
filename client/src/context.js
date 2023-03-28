@@ -11,6 +11,8 @@ const QuizmoProvider = ({ children }) => {
   const [signUpEmail, setSignUpEmail] = useState("");
   const [loading, setLoading] = useState(true);
   const [userSession, setUserSession] = useState();
+  const [pages, setPages] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
   // functions
 
@@ -92,8 +94,10 @@ const QuizmoProvider = ({ children }) => {
   // function to write user score to DB
   const WriteScore = async (username, category, difficulty, score) => {
     const data = { username, category, difficulty, score };
+    console.log(data);
     await fetch("http://localhost:5001/addscore", {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
@@ -108,11 +112,6 @@ const QuizmoProvider = ({ children }) => {
         console.log(e);
       });
   };
-
-  // onLoads
-  // useEffect(() => {
-  //   FetchUserAuth();
-  // }, []);
 
   return (
     <QuizmoContext.Provider
@@ -136,6 +135,10 @@ const QuizmoProvider = ({ children }) => {
         FetchUserAuth,
         LogoutUser,
         WriteScore,
+        pages,
+        setPages,
+        currentPage,
+        setCurrentPage,
       }}
     >
       {children}

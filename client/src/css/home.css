@@ -24,12 +24,22 @@
   height: 100vh;
   width: 100vw;
   background-color: var(--background-theme);
-  /* background-image: url(../Resources/HomeBackground3.jpg);
-  background-repeat: no-repeat;
-  background-size: cover; */
 }
 
-/* sidebar content */
+/* overlay content */
+.HomeNavbar {
+  position: absolute;
+  padding-top: 2rem;
+  padding-left: 2rem;
+  top: 0px;
+  left: 0px;
+  color: #fff;
+}
+
+.HomeNavbar h1:hover {
+  cursor: pointer;
+  color: var(--login-modal-background);
+}
 
 .MenuNavbar {
   position: absolute;

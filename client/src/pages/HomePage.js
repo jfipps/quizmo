@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import HomeNav from "../components/Home/HomeNav";
 import HomeContent from "../components/Home/HomeContent";
+import Loader from "../components/Loader";
 import { Navigate } from "react-router-dom";
 import { QuizmoContext } from "../context";
 import "../css/home.css";
@@ -41,8 +42,7 @@ function HomePage(props) {
 
   // loads home page if user session available, returns to login if not
   if (isLoading) {
-    console.log("Loading");
-    return <div>Loading...</div>;
+    return <Loader></Loader>;
   }
   if (loggedIn) {
     return (

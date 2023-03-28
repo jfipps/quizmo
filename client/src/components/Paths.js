@@ -10,6 +10,7 @@ import { QuizmoContext } from "../context";
 import LoginPage from "../pages/LoginPage";
 import HomePage from "../pages/HomePage";
 import QuizPage from "../pages/QuizPage";
+import Loader from "./Loader";
 import HighScorePage from "../pages/HighScorePage";
 
 export default function Paths() {

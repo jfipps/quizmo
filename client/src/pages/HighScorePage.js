@@ -1,12 +1,16 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Navigate, useParams } from "react-router-dom";
-import MyScores from "../components/HighScores/MyScores";
-import AllScores from "../components/HighScores/AllScores";
+import HomeNav from "../components/Home/HomeNav";
+import HighScoreModal from "../components/HighScores/HighScoreModal";
+import Loader from "../components/Loader";
+import { QuizmoContext } from "../context";
+import "../css/highscores.css";
 
 export default function HighScorePage() {
+  const { setLoginUsername } = useContext(QuizmoContext);
+
   const [isLoading, setIsLoading] = useState(true);
   const [loggedIn, setLoggedIn] = useState();
-  const [scoreSelect, setScoreSelect] = useState(true);
 
   // checks if user is logged in when page loads
   const CheckAuth = async () => {
@@ -20,6 +24,7 @@ export default function HighScorePage() {
       res.json().then((data) => {
         console.log(data);
         setLoggedIn(data.loggedIn);
+        setLoginUsername(data.user.username);
         setIsLoading(false);
       });
     });
@@ -30,35 +35,19 @@ export default function HighScorePage() {
   }, []);
 
   if (isLoading) {
-    console.log("Loading");
-    return <div>Loading...</div>;
+    return <Loader></Loader>;
   }
   if (loggedIn) {
     return (
-      <>
-        <div>
-          <button
-            onClick={() => {
-              setScoreSelect(true);
-            }}
-          >
-            Mine
-          </button>
-          <button
-            onClick={() => {
-              setScoreSelect(false);
-            }}
-          >
-            All
-          </button>
+      <section className="HighScoresPage">
+        <HomeNav></HomeNav>
+        <div className="HighScoreContents">
+          <HighScoreModal></HighScoreModal>
         </div>
-        {scoreSelect ? <MyScores></MyScores> : <AllScores></AllScores>}
-      </>
+      </section>
     );
   } else {
     console.log("User session not available");
     return <Navigate replace to="/login" />;
   }
-
-  return <div></div>;
 }

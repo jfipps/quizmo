@@ -5,7 +5,7 @@ import "../../css/quiz.css";
 
 export default function QuizQuestions({ category, difficulty }) {
   // context grab
-  const { username, WriteScore } = useContext(QuizmoContext);
+  const { loginUsername, WriteScore } = useContext(QuizmoContext);
 
   // states
   const [isLoading, setIsLoading] = useState(true);
@@ -71,7 +71,8 @@ export default function QuizQuestions({ category, difficulty }) {
   // sends final score to DB when done
   useEffect(() => {
     if (!isPlaying) {
-      WriteScore(username, category, difficulty, score);
+      console.log("Quiz Complete");
+      WriteScore(loginUsername, category, difficulty, score);
     }
   }, [isPlaying]);
 

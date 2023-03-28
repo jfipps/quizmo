@@ -1,13 +1,19 @@
 import React, { useState, useEffect, useContext } from "react";
 import { QuizmoContext } from "../../context";
+import "../../css/highscores.css";
 
 export default function MyScores() {
-  const { username } = useContext(QuizmoContext);
+  const { loginUsername, pages, setPages, currentPage } =
+    useContext(QuizmoContext);
 
   const [isLoading, setIsLoading] = useState(true);
   const [allScores, setAllScores] = useState();
+  const rowLimit = 10;
 
-  const getMyScores = async (username) => {
+  const lastIndex = currentPage * rowLimit;
+  const firstIndex = lastIndex - rowLimit;
+
+  const getAllScores = async (username) => {
     const data = { username };
     await fetch("http://localhost:5001/getallscores", {
       method: "POST",
@@ -18,7 +24,12 @@ export default function MyScores() {
     })
       .then((res) => {
         res.json().then((data) => {
-          setAllScores(data);
+          setAllScores(data.slice(firstIndex, lastIndex));
+          const tempPages = [];
+          for (let i = 0; i < Math.ceil(data.length / rowLimit); i++) {
+            tempPages.push(i);
+          }
+          setPages(tempPages);
           setIsLoading(false);
         });
       })
@@ -29,8 +40,12 @@ export default function MyScores() {
   };
 
   useEffect(() => {
-    getMyScores(username);
+    getAllScores(loginUsername);
   }, []);
+
+  useEffect(() => {
+    getAllScores(loginUsername);
+  }, [currentPage]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -38,15 +53,47 @@ export default function MyScores() {
     return (
       <>
         {allScores ? (
-          <div>
-            {allScores.map((score, index) => {
-              return (
-                <article key={index}>
-                  {score.username} - {score.category} - {score.difficulty} -{" "}
-                  {score.score}/10
-                </article>
-              );
-            })}
+          <div className="HighScoreTableContainer">
+            {/* <table className="HighScoreTable">
+              <tr>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Difficulty</th>
+                <th>Score</th>
+              </tr>
+              {allScores.map((score, index) => {
+                var quizDate = new Date(score.createdAt);
+                return (
+                  <tr key={index}>
+                    <td>{quizDate.toLocaleDateString()}</td>
+                    <td>{score.category}</td>
+                    <td>{score.difficulty}</td>
+                    <td>{score.score}/10</td>
+                  </tr>
+                );
+              })}
+            </table> */}
+            <div className="HighScoreTableDiv">
+              <div className="TableHeaderRow">
+                <div className="HeaderCell TableCell">Date</div>
+                <div className="HeaderCell TableCell">Category</div>
+                <div className="HeaderCell TableCell">Difficulty</div>
+                <div className="HeaderCell TableCell">Score</div>
+              </div>
+              {allScores.map((score, index) => {
+                var quizDate = new Date(score.createdAt);
+                return (
+                  <div className="TableScoreRow" key={index}>
+                    <div className="TableCell">
+                      {quizDate.toLocaleDateString()}
+                    </div>
+                    <div className="TableCell">{score.category}</div>
+                    <div className="TableCell">{score.difficulty}</div>
+                    <div className="TableCell">{score.score}/10</div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         ) : (
           <div>No Scores</div>

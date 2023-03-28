@@ -1,0 +1,214 @@
+:root {
+  --background-main: #05388c;
+  --font-navy: #05388c;
+  --login-background: #8c92a5;
+  --login-modal-background: #b9bfd3;
+  --background-theme: #2c3333;
+  --homepage-box-background: rgba(8, 4, 36, 0.8);
+  --homepage-box-background-test: rgba(46, 79, 79, 0.8);
+  --homepage-box-background-no-opac: rgba(74, 119, 119, 0.8);
+  --table-hover: rgba(23, 12, 97, 0.8);
+}
+
+/* reset */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.HighScoresPage {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--background-theme);
+}
+
+.HighScoreContents {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.HighScoresModal {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 50%;
+  border: 2px solid white;
+  border-radius: 2rem;
+  background-color: var(--homepage-box-background-test);
+}
+
+.ButtonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+}
+
+#myscores {
+  border-top-left-radius: 2rem;
+}
+
+#allscores {
+  border-top-right-radius: 2rem;
+}
+
+.ScoreSelectButton {
+  width: 50%;
+  height: 3rem;
+  background-color: var(--homepage-box-background-test);
+  color: #fff;
+}
+
+.ActiveSelection {
+  width: 50%;
+  height: 3rem;
+  background-color: #fff;
+  color: #000;
+}
+
+.ActiveSelection span {
+  border-bottom: 1px solid #000;
+}
+
+.ScoreSelectButton:hover {
+  background-color: var(--homepage-box-background-no-opac);
+  cursor: pointer;
+}
+
+.PageSelect {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  list-style: none;
+  min-width: 20%;
+  padding-left: 0px;
+  margin-top: 2rem;
+}
+
+.PageList {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  min-width: 50%;
+}
+
+.PageLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #fff;
+  height: 2rem;
+  width: 2rem;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  margin-bottom: 0;
+  color: #fff;
+}
+
+.PageLink:hover {
+  cursor: pointer;
+  background-color: var(--homepage-box-background-no-opac);
+}
+
+.Active {
+  background-color: #fff;
+  color: #000;
+}
+
+.Active:hover {
+  background-color: #fff;
+}
+
+/* Table Setup */
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.HighScoreTableContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  margin-top: auto;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.HighScoreTable {
+  height: 100%;
+  width: 100%;
+}
+
+.HighScoreTableDiv {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.TableHeaderRow {
+  display: flex;
+  flex-direction: row;
+  min-height: 10%;
+  width: 100%;
+}
+
+.TableScoreRow {
+  display: flex;
+  flex-direction: row;
+  min-height: 9%;
+  width: 100%;
+}
+
+.HighScoreTable tr {
+  height: auto;
+}
+
+.HighScoreTable th {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.HeaderCell {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.HighScoreTable tr:not(:first-child):hover {
+  background-color: var(--table-hover);
+}
+
+tr:last-child td:first-child {
+  border-bottom-left-radius: 2rem;
+}
+
+tr:last-child td:last-child {
+  border-bottom-right-radius: 2rem;
+}
+
+.HighScoreTable td,
+.HighScoreTable th {
+  padding: 0.5rem;
+  text-align: center;
+  border-top: 1px solid #fff;
+}
+
+.TableCell {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5rem;
+  border-top: 1px solid #fff;
+  width: 100%;
+}

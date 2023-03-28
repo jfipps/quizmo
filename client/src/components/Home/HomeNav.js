@@ -24,14 +24,28 @@ export default function HomeNav() {
     }
   };
 
+  // function to send user to high scores page
+  const HandleHighScore = async () => {
+    navigate("/highscores");
+  };
+
+  // go home function
+
+  const HandleHome = () => {
+    navigate("/");
+  };
+
   return (
     <>
       <input type="checkbox" id="chk" aria-hidden="true"></input>
       <div className="MenuOverlay">
-        <button>High Scores</button>
+        <button onClick={() => HandleHighScore()}>High Scores</button>
         <button>Friends</button>
         <button>About</button>
         <button onClick={() => HandleLogout()}>Logout</button>
+      </div>
+      <div className="HomeNavbar" onClick={() => HandleHome()}>
+        <h1>Quizmo</h1>
       </div>
       <div className="MenuNavbar">
         <label className="Open" for="chk">
