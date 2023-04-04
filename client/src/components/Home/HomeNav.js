@@ -29,6 +29,11 @@ export default function HomeNav() {
     navigate("/highscores");
   };
 
+  // function to send the user to the about page
+  const HandleAbout = async () => {
+    navigate("/about");
+  };
+
   // go home function
 
   const HandleHome = () => {
@@ -40,8 +45,7 @@ export default function HomeNav() {
       <input type="checkbox" id="chk" aria-hidden="true"></input>
       <div className="MenuOverlay">
         <button onClick={() => HandleHighScore()}>High Scores</button>
-        <button>Friends</button>
-        <button>About</button>
+        <button onClick={() => HandleAbout()}>About</button>
         <button onClick={() => HandleLogout()}>Logout</button>
       </div>
       <div className="HomeNavbar" onClick={() => HandleHome()}>

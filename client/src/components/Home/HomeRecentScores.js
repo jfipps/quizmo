@@ -7,10 +7,12 @@ export default function HomeRecentScores() {
   const [isLoading, setIsLoading] = useState(true);
   const [myScores, setMyScores] = useState();
 
+  // grabs up to 10 most recent scores
+  // from the logged in user from the database
   const GetRecentScores = async (username) => {
     const data = { username };
     console.log(data);
-    await fetch("http://localhost:5001/getmyscores", {
+    await fetch("http://localhost:5001/getmyrecentscores", {
       method: "POST",
       credentials: "include",
       headers: {
@@ -37,29 +39,41 @@ export default function HomeRecentScores() {
 
   return (
     <section className="RecentScores">
-      <div className="RecentScoresModal">
+      <div className="RecentScoresContainer">
         <h1>Recent Scores</h1>
         <div className="RecentScoresBox">
-          <table className="RecentScoresTable">
-            <tr>
-              <th>Date</th>
-              <th>Category</th>
-              <th>Difficulty</th>
-              <th>Score</th>
-            </tr>
+          <div className="RecentScoresTable">
+            <div className="TableHeaderRow">
+              <div className="HeaderCell TableCell">Date</div>
+              <div className="HeaderCell TableCell">Category</div>
+              <div className="HeaderCell TableCell">Difficulty</div>
+              <div className="HeaderCell TableCell">Score</div>
+            </div>
             {!isLoading &&
               myScores.map((score, index) => {
                 var quizDate = new Date(score.createdAt);
+                var category = score.category
+                  .replaceAll("_", " ")
+                  .split(" ")
+                  .map((word) => {
+                    return word.charAt(0).toUpperCase() + word.slice(1);
+                  })
+                  .join(" ");
+                var difficulty =
+                  score.difficulty.charAt(0).toUpperCase() +
+                  score.difficulty.slice(1);
                 return (
-                  <tr key={index}>
-                    <td>{quizDate.toLocaleDateString()}</td>
-                    <td>{score.category}</td>
-                    <td>{score.difficulty}</td>
-                    <td>{score.score}/10</td>
-                  </tr>
+                  <div className="TableScoreRow" key={index}>
+                    <div className="TableCell">
+                      {quizDate.toLocaleDateString()}
+                    </div>
+                    <div className="TableCell">{category}</div>
+                    <div className="TableCell">{difficulty}</div>
+                    <div className="TableCell">{score.score}/10</div>
+                  </div>
                 );
               })}
-          </table>
+          </div>
         </div>
       </div>
     </section>

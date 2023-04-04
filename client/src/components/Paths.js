@@ -10,7 +10,7 @@ import { QuizmoContext } from "../context";
 import LoginPage from "../pages/LoginPage";
 import HomePage from "../pages/HomePage";
 import QuizPage from "../pages/QuizPage";
-import Loader from "./Loader";
+import AboutPage from "../pages/AboutPage";
 import HighScorePage from "../pages/HighScorePage";
 
 export default function Paths() {
@@ -28,6 +28,7 @@ export default function Paths() {
           path="/quiz/:category/:difficulty"
           element={<QuizPage></QuizPage>}
         ></Route>
+        <Route path="/about" element={<AboutPage></AboutPage>}></Route>
       </Routes>
     </>
   );

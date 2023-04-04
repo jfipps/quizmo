@@ -45,11 +45,12 @@ export default function HighScoreModal() {
     // checks if already on the last page and sets
     // the page limits accordingly
     if (command === "next") {
-      if (currentPage + 1 > maxPageLimit) {
+      console.log(currentPage, maxPageLimit, minPageLimit, pages.length);
+      if (currentPage + 1 > maxPageLimit && currentPage < pages.length) {
         setMaxPageLimit(maxPageLimit + pageLimit);
         setMinPageLimit(minPageLimit + pageLimit);
       }
-      if (currentPage !== pages.length) {
+      if (currentPage < pages.length) {
         setCurrentPage(currentPage + 1);
       }
     }
@@ -84,6 +85,7 @@ export default function HighScoreModal() {
             className={scoreSelect ? "ActiveSelection" : "ScoreSelectButton"}
             id="myscores"
             onClick={() => {
+              pageNavClick("first");
               setScoreSelect(true);
             }}
           >
@@ -93,6 +95,7 @@ export default function HighScoreModal() {
             className={!scoreSelect ? "ActiveSelection" : "ScoreSelectButton"}
             id="allscores"
             onClick={() => {
+              setCurrentPage(1);
               setScoreSelect(false);
             }}
           >

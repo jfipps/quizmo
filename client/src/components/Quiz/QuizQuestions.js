@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import Loader from "../Loader";
 import { QuizmoContext } from "../../context";
 import { useNavigate } from "react-router-dom";
 import "../../css/quiz.css";
@@ -51,6 +52,14 @@ export default function QuizQuestions({ category, difficulty }) {
     }
   };
 
+  // sends final score to db if player does not want to try again
+  const finalizeQuiz = () => {
+    if (!isPlaying) {
+      WriteScore(loginUsername, category, difficulty, score);
+      navigate("/");
+    }
+  };
+
   // init call to get questions from backend
   useEffect(() => {
     getQuestions(category, difficulty);
@@ -68,21 +77,13 @@ export default function QuizQuestions({ category, difficulty }) {
     }
   }, [questions, currentQuestion]);
 
-  // sends final score to DB when done
-  useEffect(() => {
-    if (!isPlaying) {
-      console.log("Quiz Complete");
-      WriteScore(loginUsername, category, difficulty, score);
-    }
-  }, [isPlaying]);
-
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader></Loader>;
   } else {
     return (
       <section className="QuizQuestion">
         {isPlaying ? (
-          <div className="Question">
+          <div className="QuizBox">
             <h3>{questions[currentQuestion].question}</h3>
             <div className="AnswerButtons">
               {answers.map((answer, index) => {
@@ -102,10 +103,22 @@ export default function QuizQuestions({ category, difficulty }) {
             </h4>
           </div>
         ) : (
-          <>
-            <div>You scored {score}/10</div>
-            <button onClick={() => navigate("/")}>Home</button>
-          </>
+          <div className="QuizBox">
+            <div className="ResultsContainer">
+              <span>You scored {score}/10</span>
+              <div className="ButtonContainer">
+                <button className="ResultButton" onClick={() => finalizeQuiz()}>
+                  Home
+                </button>
+                <button
+                  className="ResultButton"
+                  onClick={() => window.location.reload(false)}
+                >
+                  Try Again
+                </button>
+              </div>
+            </div>
+          </div>
         )}
       </section>
     );

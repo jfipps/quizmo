@@ -7,6 +7,7 @@
   --homepage-box-background: rgba(8, 4, 36, 0.8);
   --homepage-box-background-test: rgba(46, 79, 79, 0.8);
   --homepage-box-background-no-opac: rgba(8, 4, 36, 1);
+  --menu-overlay-theme: rgb(30, 41, 41);
   --table-hover: rgba(23, 12, 97, 0.8);
 }
 
@@ -17,80 +18,54 @@
   box-sizing: border-box;
 }
 
-.QuizQuestion {
+.AboutPage {
   display: flex;
   flex-direction: column;
   height: 100vh;
   width: 100vw;
-  background-color: var(--background-theme);
   justify-content: center;
   align-items: center;
+  background-color: var(--background-theme);
 }
 
-.QuizBox {
+.AboutContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   width: 50%;
   height: 50%;
+  border: 2px solid white;
   border-radius: 2rem;
-  border: 2px solid #fff;
   background-color: var(--homepage-box-background-test);
-  padding: 2rem;
 }
 
-.ResultsContainer {
+.AboutContents {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  height: 50%;
-  width: 100%;
-}
-
-.QuizBox span {
+  height: 100%;
+  width: 50%;
   color: #fff;
-  font-weight: bold;
-  font-size: 3.5rem;
 }
 
-.QuizBox h3 {
-  color: #fff;
-  font-weight: bold;
+.AboutContents h1 {
+  margin-bottom: 2rem;
 }
 
-.ResultButton {
+.AboutContents span {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.HomeButton {
   padding: 1rem;
   border-radius: 2rem;
   font-size: 1.5rem;
-  width: 20%;
+  width: 50%;
   margin: 1rem;
 }
 
-.ResultButton:hover {
-  background-color: var(--login-modal-background);
-}
-
-.ProgressTracker {
-  color: white;
-  font-weight: bold;
-}
-
-.AnswerButtons {
-  display: flex;
-  flex-direction: column;
-  width: 60%;
-  height: 100%;
-  justify-content: space-around;
-}
-
-.AnswerButton {
-  padding: 1rem;
-  border-radius: 2rem;
-  font-size: 1.5rem;
-}
-
-.AnswerButton:hover {
+.HomeButton:hover {
   background-color: var(--login-modal-background);
 }

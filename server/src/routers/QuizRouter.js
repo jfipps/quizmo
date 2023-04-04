@@ -39,13 +39,26 @@ router.post("/addscore", sessionCheck, async (req, res) => {
   }
 });
 
-// get personal scores from DB
+// get all personal scores from DB
 router.post("/getmyscores", sessionCheck, async (req, res) => {
   try {
-    console.log(req.body);
-    const myScores = await (
-      await Score.find({ username: { $eq: req.body.username } })
-    ).reverse();
+    const myScores = await await Score.find({
+      username: { $eq: req.body.username },
+    }).sort({ createdAt: -1 });
+    res.send(myScores);
+  } catch (e) {
+    res.status(500).send(e);
+  }
+});
+
+// get recent personal scores from DB
+router.post("/getmyrecentscores", sessionCheck, async (req, res) => {
+  try {
+    const myScores = await await Score.find({
+      username: { $eq: req.body.username },
+    })
+      .limit(10)
+      .sort({ createdAt: -1 });
     res.send(myScores);
   } catch (e) {
     res.status(500).send(e);
@@ -55,7 +68,7 @@ router.post("/getmyscores", sessionCheck, async (req, res) => {
 // get all scores from DB
 router.post("/getallscores", async (req, res) => {
   try {
-    const allScores = await (await Score.find({})).reverse();
+    const allScores = await await Score.find({}).sort({ createdAt: -1 });
     res.send(allScores);
   } catch (e) {
     res.status(500).send(e);

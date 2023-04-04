@@ -1,14 +1,22 @@
 import React, { useState, useEffect, useContext } from "react";
+import Loader from "../Loader";
 import { QuizmoContext } from "../../context";
 import "../../css/highscores.css";
 
 export default function MyScores() {
-  const { loginUsername, setPages } = useContext(QuizmoContext);
+  const { loginUsername, setPages, currentPage } = useContext(QuizmoContext);
 
   const [isLoading, setIsLoading] = useState(true);
   const [myScores, setMyScores] = useState();
   const rowLimit = 10;
 
+  const lastIndex = currentPage * rowLimit;
+  const firstIndex = lastIndex - rowLimit;
+
+  // function to grab scores from current user
+  // from the database.
+  // it will filter the data to only display
+  // scores that match the page limits
   const getMyScores = async (username) => {
     const data = { username };
     await fetch("http://localhost:5001/getmyscores", {
@@ -21,7 +29,7 @@ export default function MyScores() {
     })
       .then((res) => {
         res.json().then((data) => {
-          setMyScores(data);
+          setMyScores(data.slice(firstIndex, lastIndex));
           const tempPages = [];
           for (let i = 0; i < Math.ceil(data.length / rowLimit); i++) {
             tempPages.push(i);
@@ -40,49 +48,47 @@ export default function MyScores() {
     getMyScores(loginUsername);
   }, []);
 
+  // grabs scores when page number changes
+  useEffect(() => {
+    getMyScores(loginUsername);
+  }, [currentPage]);
+
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader></Loader>;
   } else {
     return (
       <>
         {myScores ? (
           <div className="HighScoreTableContainer">
-            {/* <table className="HighScoreTable">
-              <tr>
-                <th>Date</th>
-                <th>Category</th>
-                <th>Difficulty</th>
-                <th>Score</th>
-              </tr>
-              {myScores.map((score, index) => {
-                var quizDate = new Date(score.createdAt);
-                return (
-                  <tr key={index}>
-                    <td>{quizDate.toLocaleDateString()}</td>
-                    <td>{score.category}</td>
-                    <td>{score.difficulty}</td>
-                    <td>{score.score}/10</td>
-                  </tr>
-                );
-              })}
-            </table> */}
             <div className="HighScoreTableDiv">
               <div className="TableHeaderRow">
                 <div className="HeaderCell TableCell">Date</div>
                 <div className="HeaderCell TableCell">Category</div>
                 <div className="HeaderCell TableCell">Difficulty</div>
                 <div className="HeaderCell TableCell">Score</div>
+                <div className="HeaderCell TableCell">Username</div>
               </div>
               {myScores.map((score, index) => {
                 var quizDate = new Date(score.createdAt);
+                var category = score.category
+                  .replaceAll("_", " ")
+                  .split(" ")
+                  .map((word) => {
+                    return word.charAt(0).toUpperCase() + word.slice(1);
+                  })
+                  .join(" ");
+                var difficulty =
+                  score.difficulty.charAt(0).toUpperCase() +
+                  score.difficulty.slice(1);
                 return (
                   <div className="TableScoreRow" key={index}>
                     <div className="TableCell">
                       {quizDate.toLocaleDateString()}
                     </div>
-                    <div className="TableCell">{score.category}</div>
-                    <div className="TableCell">{score.difficulty}</div>
+                    <div className="TableCell">{category}</div>
+                    <div className="TableCell">{difficulty}</div>
                     <div className="TableCell">{score.score}/10</div>
+                    <div className="TableCell">{score.username}</div>
                   </div>
                 );
               })}
