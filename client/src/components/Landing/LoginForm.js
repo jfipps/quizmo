@@ -32,7 +32,7 @@ export default function LoginForm(props) {
       FetchUserAuth();
       navigate("/home");
     } else {
-      navigate("/");
+      alert("Invalid Username/Password. Please try again.");
     }
     setLoginUsername("");
     setLoginPassword("");

@@ -8,7 +8,6 @@ export default function LandingPage() {
   return (
     <section className="LandingPage">
       <LoginModal></LoginModal>
-      {/* <LoginDesc></LoginDesc> */}
     </section>
   );
 }

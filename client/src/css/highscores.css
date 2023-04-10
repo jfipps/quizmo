@@ -129,11 +129,6 @@
 
 /* Table Setup */
 
-table {
-  border-collapse: separate;
-  border-spacing: 0;
-}
-
 .HighScoreTableContainer {
   display: flex;
   flex-direction: column;
@@ -171,37 +166,9 @@ table {
   width: 100%;
 }
 
-.HighScoreTable tr {
-  height: auto;
-}
-
-.HighScoreTable th {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
 .HeaderCell {
   padding-top: 1rem;
   padding-bottom: 1rem;
-}
-
-.HighScoreTable tr:not(:first-child):hover {
-  background-color: var(--table-hover);
-}
-
-tr:last-child td:first-child {
-  border-bottom-left-radius: 2rem;
-}
-
-tr:last-child td:last-child {
-  border-bottom-right-radius: 2rem;
-}
-
-.HighScoreTable td,
-.HighScoreTable th {
-  padding: 0.5rem;
-  text-align: center;
-  border-top: 1px solid #fff;
 }
 
 .TableCell {
