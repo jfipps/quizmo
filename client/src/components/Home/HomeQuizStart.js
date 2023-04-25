@@ -22,7 +22,7 @@ export default function HomeQuizStart(props) {
 
   return (
     <section className="QuizSelect">
-      <div className="QuizSelectModal">
+      <div className="QuizSelectContainer">
         <h1>Take a Quiz!</h1>
         <form onSubmit={handleSubmit} className="QuizSelectForm">
           <label>

@@ -106,9 +106,9 @@ export default function QuizQuestions({ category, difficulty }) {
           <div className="QuizBox">
             <div className="ResultsContainer">
               <span>You scored {score}/10</span>
-              <div className="ButtonContainer">
+              <div className="ResultButtonContainer">
                 <button className="ResultButton" onClick={() => finalizeQuiz()}>
-                  Home
+                  Record Score
                 </button>
                 <button
                   className="ResultButton"

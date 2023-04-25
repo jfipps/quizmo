@@ -32,8 +32,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 50%;
-  height: 50%;
+  width: 60%;
+  height: 60%;
   border-radius: 2rem;
   border: 2px solid #fff;
   background-color: var(--homepage-box-background-test);
@@ -64,7 +64,7 @@
   padding: 1rem;
   border-radius: 2rem;
   font-size: 1.5rem;
-  width: 20%;
+  width: 40%;
   margin: 1rem;
 }
 
@@ -77,12 +77,21 @@
   font-weight: bold;
 }
 
+.ResultButtonContainer {
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
 .AnswerButtons {
   display: flex;
   flex-direction: column;
-  width: 60%;
-  height: 100%;
-  justify-content: space-around;
+  width: 50%;
+  height: 80%;
+  justify-content: space-evenly;
 }
 
 .AnswerButton {
@@ -93,4 +102,179 @@
 
 .AnswerButton:hover {
   background-color: var(--login-modal-background);
+}
+
+/* .ResultButtonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border: 1px solid red;
+} */
+
+/* Media Queries */
+
+/* x-small devices */
+@media screen and (min-width: 100px) and (max-width: 575.98px) {
+  .QuizBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 0%;
+    border: none;
+    background-color: var(--background-theme);
+  }
+  .AnswerButtons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 80%;
+    justify-content: space-evenly;
+  }
+  .ResultButtonContainer {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 100%;
+    justify-content: center;
+  }
+  .ResultButton {
+    padding: 1rem;
+    border-radius: 2rem;
+    font-size: 1.5rem;
+    width: 100%;
+    margin: 1rem;
+  }
+
+  .ResultButton:hover {
+    background-color: var(--login-modal-background);
+  }
+}
+
+/* small devices */
+@media screen and (min-width: 576px) and (max-width: 767.98px) {
+  .QuizBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 0%;
+    border: none;
+    background-color: var(--background-theme);
+  }
+  .AnswerButtons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 80%;
+    justify-content: space-evenly;
+  }
+  .ResultButtonContainer {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 100%;
+    justify-content: center;
+  }
+  .ResultButton {
+    padding: 1rem;
+    border-radius: 2rem;
+    font-size: 1.5rem;
+    width: 100%;
+    margin: 1rem;
+  }
+
+  .ResultButton:hover {
+    background-color: var(--login-modal-background);
+  }
+}
+
+/* medium devices */
+@media screen and (min-width: 768px) and (max-width: 991.98px) {
+  .QuizBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 0%;
+    border: none;
+    background-color: var(--background-theme);
+  }
+  .AnswerButtons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 80%;
+    justify-content: space-evenly;
+  }
+  .ResultButtonContainer {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 100%;
+    justify-content: center;
+  }
+  .ResultButton {
+    padding: 1rem;
+    border-radius: 2rem;
+    font-size: 1.5rem;
+    width: 100%;
+    margin: 1rem;
+  }
+
+  .ResultButton:hover {
+    background-color: var(--login-modal-background);
+  }
+}
+
+/* large devices */
+@media screen and (min-width: 992px) and (max-width: 1199.98px) {
+  .QuizBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 70%;
+    border-radius: 2rem;
+    border: 2px solid #fff;
+    background-color: var(--homepage-box-background-test);
+    padding: 2rem;
+  }
+  .AnswerButtons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 80%;
+    justify-content: space-evenly;
+  }
+}
+
+/* x-large devices */
+@media screen and (min-width: 1200px) and (max-width: 1399.98px) {
+  .QuizBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 70%;
+    border-radius: 2rem;
+    border: 2px solid #fff;
+    background-color: var(--homepage-box-background-test);
+    padding: 2rem;
+  }
+  .AnswerButtons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 80%;
+    justify-content: space-evenly;
+  }
 }

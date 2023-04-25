@@ -7,8 +7,8 @@ import "../../css/home.css";
 export default function HomeContent(props) {
   return (
     <>
-      <HomeRecentScores></HomeRecentScores>
       <HomeQuizStart></HomeQuizStart>
+      <HomeRecentScores></HomeRecentScores>
     </>
   );
 }

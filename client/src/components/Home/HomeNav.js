@@ -48,18 +48,20 @@ export default function HomeNav() {
         <button onClick={() => HandleAbout()}>About</button>
         <button onClick={() => HandleLogout()}>Logout</button>
       </div>
-      <div className="HomeNavbar" onClick={() => HandleHome()}>
-        <h1>Quizmo</h1>
-      </div>
-      <div className="MenuNavbar">
-        <label className="Open" for="chk">
-          <GiHamburgerMenu
-            size={32}
-            className="MenuButton"
-            color={menuOpen ? "white" : "white"}
-            onClick={() => setMenuOpen(!menuOpen)}
-          ></GiHamburgerMenu>
-        </label>
+      <div className="HomeNav">
+        <div className="HomeNavbar" onClick={() => HandleHome()}>
+          <h1>Quizmo</h1>
+        </div>
+        <div className="MenuNavbar">
+          <label className="Open" for="chk">
+            <GiHamburgerMenu
+              size={32}
+              className="MenuButton"
+              color={menuOpen ? "white" : "white"}
+              onClick={() => setMenuOpen(!menuOpen)}
+            ></GiHamburgerMenu>
+          </label>
+        </div>
       </div>
     </>
   );

@@ -43,11 +43,11 @@ export default function HomeRecentScores() {
         <h1>Recent Scores</h1>
         <div className="RecentScoresBox">
           <div className="RecentScoresTable">
-            <div className="TableHeaderRow">
-              <div className="HeaderCell TableCell">Date</div>
-              <div className="HeaderCell TableCell">Category</div>
-              <div className="HeaderCell TableCell">Difficulty</div>
-              <div className="HeaderCell TableCell">Score</div>
+            <div className="HomeTableHeaderRow">
+              <div className="HomeHeaderCell HomeTableCell">Date</div>
+              <div className="HomeHeaderCell HomeTableCell">Category</div>
+              <div className="HomeHeaderCell HomeTableCell">Difficulty</div>
+              <div className="HomeHeaderCell HomeTableCell">Score</div>
             </div>
             {!isLoading &&
               myScores.map((score, index) => {
@@ -63,13 +63,13 @@ export default function HomeRecentScores() {
                   score.difficulty.charAt(0).toUpperCase() +
                   score.difficulty.slice(1);
                 return (
-                  <div className="TableScoreRow" key={index}>
-                    <div className="TableCell">
+                  <div className="HomeTableScoreRow" key={index}>
+                    <div className="HomeTableCell">
                       {quizDate.toLocaleDateString()}
                     </div>
-                    <div className="TableCell">{category}</div>
-                    <div className="TableCell">{difficulty}</div>
-                    <div className="TableCell">{score.score}/10</div>
+                    <div className="HomeTableCell">{category}</div>
+                    <div className="HomeTableCell">{difficulty}</div>
+                    <div className="HomeTableCell">{score.score}/10</div>
                   </div>
                 );
               })}

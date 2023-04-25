@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import Loader from "../Loader";
+import ScoresLoader from "../ScoresLoader";
 import { QuizmoContext } from "../../context";
 import "../../css/highscores.css";
 
@@ -8,6 +8,7 @@ export default function MyScores() {
 
   const [isLoading, setIsLoading] = useState(true);
   const [allScores, setAllScores] = useState();
+  const [everyScore, setEveryScore] = useState();
   const rowLimit = 10;
 
   const lastIndex = currentPage * rowLimit;
@@ -28,6 +29,7 @@ export default function MyScores() {
     })
       .then((res) => {
         res.json().then((data) => {
+          setEveryScore(data);
           setAllScores(data.slice(firstIndex, lastIndex));
           const tempPages = [];
           for (let i = 0; i < Math.ceil(data.length / rowLimit); i++) {
@@ -53,46 +55,83 @@ export default function MyScores() {
   }, [currentPage]);
 
   if (isLoading) {
-    return <Loader></Loader>;
+    return <ScoresLoader></ScoresLoader>;
   } else {
     return (
       <>
         {allScores ? (
-          <div className="HighScoreTableContainer">
-            <div className="HighScoreTableDiv">
-              <div className="TableHeaderRow">
-                <div className="HeaderCell TableCell">Date</div>
-                <div className="HeaderCell TableCell">Category</div>
-                <div className="HeaderCell TableCell">Difficulty</div>
-                <div className="HeaderCell TableCell">Score</div>
-                <div className="HeaderCell TableCell">Username</div>
-              </div>
-              {allScores.map((score, index) => {
-                var quizDate = new Date(score.createdAt);
-                var category = score.category
-                  .replaceAll("_", " ")
-                  .split(" ")
-                  .map((word) => {
-                    return word.charAt(0).toUpperCase() + word.slice(1);
-                  })
-                  .join(" ");
-                var difficulty =
-                  score.difficulty.charAt(0).toUpperCase() +
-                  score.difficulty.slice(1);
-                return (
-                  <div className="TableScoreRow" key={index}>
-                    <div className="TableCell">
-                      {quizDate.toLocaleDateString()}
+          <>
+            <div className="HighScoreTableContainer Paginated">
+              <div className="HighScoreTableDiv">
+                <div className="TableHeaderRow">
+                  <div className="HeaderCell TableCell">Date</div>
+                  <div className="HeaderCell TableCell">Category</div>
+                  <div className="HeaderCell TableCell">Difficulty</div>
+                  <div className="HeaderCell TableCell">Score</div>
+                  <div className="HeaderCell TableCell">Username</div>
+                </div>
+                {allScores.map((score, index) => {
+                  var quizDate = new Date(score.createdAt);
+                  var category = score.category
+                    .replaceAll("_", " ")
+                    .split(" ")
+                    .map((word) => {
+                      return word.charAt(0).toUpperCase() + word.slice(1);
+                    })
+                    .join(" ");
+                  var difficulty =
+                    score.difficulty.charAt(0).toUpperCase() +
+                    score.difficulty.slice(1);
+                  return (
+                    <div className="TableScoreRow" key={index}>
+                      <div className="TableCell">
+                        {quizDate.toLocaleDateString()}
+                      </div>
+                      <div className="TableCell">{category}</div>
+                      <div className="TableCell">{difficulty}</div>
+                      <div className="TableCell">{score.score}/10</div>
+                      <div className="TableCell">{score.username}</div>
                     </div>
-                    <div className="TableCell">{category}</div>
-                    <div className="TableCell">{difficulty}</div>
-                    <div className="TableCell">{score.score}/10</div>
-                    <div className="TableCell">{score.username}</div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
-          </div>
+            <div className="HighScoreTableContainer All">
+              <div className="HighScoreTableDiv">
+                <div className="TableHeaderRow">
+                  <div className="HeaderCell TableCell">Date</div>
+                  <div className="HeaderCell TableCell">Category</div>
+                  <div className="HeaderCell TableCell">Difficulty</div>
+                  <div className="HeaderCell TableCell">Score</div>
+                  <div className="HeaderCell TableCell">Username</div>
+                </div>
+                {everyScore.map((score, index) => {
+                  var quizDate = new Date(score.createdAt);
+                  var category = score.category
+                    .replaceAll("_", " ")
+                    .split(" ")
+                    .map((word) => {
+                      return word.charAt(0).toUpperCase() + word.slice(1);
+                    })
+                    .join(" ");
+                  var difficulty =
+                    score.difficulty.charAt(0).toUpperCase() +
+                    score.difficulty.slice(1);
+                  return (
+                    <div className="TableScoreRow" key={index}>
+                      <div className="TableCell">
+                        {quizDate.toLocaleDateString()}
+                      </div>
+                      <div className="TableCell">{category}</div>
+                      <div className="TableCell">{difficulty}</div>
+                      <div className="TableCell">{score.score}/10</div>
+                      <div className="TableCell">{score.username}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </>
         ) : (
           <div>No Scores</div>
         )}
