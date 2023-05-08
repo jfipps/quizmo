@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import LoginForm from "./LoginForm";
-import SignUpForm from "./SignUpForm";
+import SignUpForm from "./SignUpOptions";
 import QuizmoImage from "../../Resources/Quizmo.png";
 import "../../css/landing.css";
 

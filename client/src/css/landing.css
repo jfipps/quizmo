@@ -26,10 +26,6 @@
   background-color: var(--background-theme);
 }
 
-#chk {
-  display: none;
-}
-
 /* left side of landing page */
 
 .LandingLeftSide {
@@ -48,10 +44,44 @@
   justify-content: flex-start;
   width: 35%;
   height: 50%;
-  border-radius: 2rem;
   border: 2px solid #fff;
   background-color: var(--homepage-box-background-test);
   overflow: hidden;
+}
+
+.FormButtonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+}
+
+.FormSelectButton {
+  width: 50%;
+  height: 4rem;
+  background-color: var(--homepage-box-background-test);
+  color: #fff;
+  border: none;
+  border-bottom: 2px solid #fff;
+}
+
+.ActiveForm {
+  width: 50%;
+  height: 4rem;
+  background-color: #fff;
+  color: #000;
+  border: none;
+  border-bottom: 2px solid #fff;
+}
+
+.ActiveForm span {
+  border-bottom: 1px solid #000;
+}
+
+.FormSelectButton:hover {
+  background-color: var(--homepage-box-background-no-opac);
+  cursor: pointer;
 }
 
 .LoginSection {
@@ -80,10 +110,6 @@
   margin: 3rem 3rem 3rem 3rem;
   transition: 0.5s ease-in-out;
   color: #fff;
-}
-
-.LoginForm label:hover {
-  cursor: pointer;
 }
 
 .LoginForm form {
@@ -115,60 +141,19 @@
   border-radius: 2rem;
 }
 
-.SignUpForm {
-  min-height: 100%;
-  width: 100%;
-  background-color: #fff;
-  border-radius: 60% / 10%;
-  transform: translateY(25%);
-  transition: 0.8s ease-in-out;
+.ResetPassword {
+  position: relative;
+  top: 10%;
+  color: #fff;
 }
 
-.SignUpForm form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
+.ResetLink {
+  color: blue;
+  border-bottom: 1px solid blue;
 }
 
-.SignUpForm label {
-  display: flex;
-  font-weight: bold;
-  justify-content: center;
-  font-size: 3em;
-  color: #000;
-  padding: 1rem 3rem 3.5rem 3rem;
-  transform: scale(0.6);
-  transition: 0.5s ease-in-out;
-}
-
-.SignUpForm label:hover {
+.ResetLink:hover {
   cursor: pointer;
-  transform: scale(0.9);
-}
-
-.SignUpForm input {
-  border: none;
-  padding: 0.75rem;
-  width: 50%;
-  border-radius: 2rem;
-  border: 2px solid #000;
-}
-
-#chk:checked ~ .SignUpForm {
-  transform: translateY(-35%);
-}
-
-#chk:checked ~ .SignUpForm label {
-  transform: scale(1);
-}
-
-#chk:checked ~ .LoginForm label {
-  transform: scale(0.6);
-}
-
-#chk:checked ~ .LoginForm label:hover {
-  transform: scale(1);
 }
 
 /* x-small devices */
@@ -179,21 +164,29 @@
     justify-content: flex-start;
     min-width: 100%;
     height: 100%;
-    border-radius: 2rem;
-    border: 2px solid #fff;
-    background-color: var(--homepage-box-background-test);
+    border-radius: 0;
+    border: none;
+    background-color: var(--background-theme);
     overflow: hidden;
   }
-  .SignUpForm {
-    min-height: 100%;
-    width: 100%;
-    background-color: #fff;
-    border-radius: 60% / 10%;
-    transform: translateY(62%);
-    transition: 0.8s ease-in-out;
+  .FormSelectButton {
+    background-color: var(--background-theme);
+    border: none;
   }
-  #chk:checked ~ .SignUpForm {
-    transform: translateY(-18%);
+  .ActiveForm {
+    border: none;
+  }
+  .FormButtonContainer {
+    border-bottom: 0;
+    border-top: 2px solid #fff;
+    position: absolute;
+    bottom: 0;
+  }
+
+  .ResetPassword {
+    position: relative;
+    top: 5%;
+    color: #fff;
   }
 }
 
@@ -205,21 +198,29 @@
     justify-content: flex-start;
     min-width: 100%;
     height: 100%;
-    border-radius: 2rem;
-    border: 2px solid #fff;
-    background-color: var(--homepage-box-background-test);
+    border-radius: 0;
+    border: none;
+    background-color: var(--background-theme);
     overflow: hidden;
   }
-  .SignUpForm {
-    min-height: 100%;
-    width: 100%;
-    background-color: #fff;
-    border-radius: 60% / 10%;
-    transform: translateY(62%);
-    transition: 0.8s ease-in-out;
+  .FormSelectButton {
+    background-color: var(--background-theme);
+    border: none;
   }
-  #chk:checked ~ .SignUpForm {
-    transform: translateY(-18%);
+  .ActiveForm {
+    border: none;
+  }
+  .FormButtonContainer {
+    border-bottom: 0;
+    border-top: 2px solid #fff;
+    position: absolute;
+    bottom: 0;
+  }
+
+  .ResetPassword {
+    position: relative;
+    top: 5%;
+    color: #fff;
   }
 }
 
@@ -229,12 +230,31 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    min-width: 70%;
-    height: 50%;
-    border-radius: 2rem;
-    border: 2px solid #fff;
-    background-color: var(--homepage-box-background-test);
+    min-width: 100%;
+    height: 100%;
+    border-radius: 0;
+    border: none;
+    background-color: var(--background-theme);
     overflow: hidden;
+  }
+  .FormSelectButton {
+    background-color: var(--background-theme);
+    border: none;
+  }
+  .ActiveForm {
+    border: none;
+  }
+  .FormButtonContainer {
+    border-bottom: 0;
+    border-top: 2px solid #fff;
+    position: absolute;
+    bottom: 0;
+  }
+
+  .ResetPassword {
+    position: relative;
+    top: 5%;
+    color: #fff;
   }
 }
 
@@ -245,8 +265,7 @@
     flex-direction: column;
     justify-content: flex-start;
     min-width: 65%;
-    height: 50%;
-    border-radius: 2rem;
+    height: 60%;
     border: 2px solid #fff;
     background-color: var(--homepage-box-background-test);
     overflow: hidden;
@@ -260,8 +279,7 @@
     flex-direction: column;
     justify-content: flex-start;
     min-width: 50%;
-    height: 50%;
-    border-radius: 2rem;
+    height: 60%;
     border: 2px solid #fff;
     background-color: var(--homepage-box-background-test);
     overflow: hidden;

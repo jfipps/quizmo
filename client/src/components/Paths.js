@@ -12,6 +12,7 @@ import HomePage from "../pages/HomePage";
 import QuizPage from "../pages/QuizPage";
 import AboutPage from "../pages/AboutPage";
 import HighScorePage from "../pages/HighScorePage";
+import ResetPasswordPage from "../pages/ResetPasswordPage";
 
 export default function Paths() {
   return (
@@ -29,6 +30,10 @@ export default function Paths() {
           element={<QuizPage></QuizPage>}
         ></Route>
         <Route path="/about" element={<AboutPage></AboutPage>}></Route>
+        <Route
+          path="resetpassword"
+          element={<ResetPasswordPage></ResetPasswordPage>}
+        ></Route>
       </Routes>
     </>
   );

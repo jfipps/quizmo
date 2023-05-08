@@ -32,6 +32,14 @@
 
 /* overlay content */
 
+.HomeNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--background-theme);
+}
+
 .HomeNavbar {
   position: absolute;
   padding-top: 2rem;
@@ -94,6 +102,10 @@
   transform: translateY(0%);
 }
 
+#chk {
+  display: none;
+}
+
 /* Main Page */
 
 .HomeContents {
@@ -105,7 +117,7 @@
   width: 100%;
 }
 
-/* Left Side */
+/* Right Side */
 
 .RecentScores {
   display: flex;
@@ -140,7 +152,7 @@
   flex-direction: column;
   height: 90%;
   width: 100%;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 }
 
@@ -181,11 +193,16 @@
   padding: 0.5rem;
   border-top: 1px solid #fff;
   width: 100%;
+  height: auto;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* Right Side */
+.NoScoresMessage {
+  font-size: 3rem;
+}
+
+/* Left Side */
 
 .QuizSelect {
   display: flex;
@@ -262,34 +279,28 @@
   .HomeNav {
     display: flex;
     flex-direction: row;
+    align-items: center;
     min-height: 8%;
     background-color: var(--background-theme);
     border-bottom: 2px solid #fff;
   }
 
-  .RecentScores {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
+  .HomeNavbar {
+    position: relative;
+    padding-top: 0rem;
+    padding-left: 2rem;
     color: #fff;
   }
 
-  .RecentScores h1 {
-    margin-top: 2rem;
+  .MenuNavbar {
+    position: relative;
+    padding-top: 0rem;
+    padding-right: 2rem;
+    color: #fff;
   }
 
-  .RecentScoresContainer {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    border-radius: 0%;
-    border: none;
-    border-top: 2px solid #fff;
-    background-color: var(--background-theme);
+  .RecentScores {
+    display: none;
   }
 
   .QuizSelect {
@@ -330,34 +341,28 @@
   .HomeNav {
     display: flex;
     flex-direction: row;
+    align-items: center;
     min-height: 8%;
     background-color: var(--background-theme);
     border-bottom: 2px solid #fff;
   }
 
-  .RecentScores {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
+  .HomeNavbar {
+    position: relative;
+    padding-top: 0rem;
+    padding-left: 2rem;
     color: #fff;
   }
 
-  .RecentScores h1 {
-    margin-top: 2rem;
+  .MenuNavbar {
+    position: relative;
+    padding-top: 0rem;
+    padding-right: 2rem;
+    color: #fff;
   }
 
-  .RecentScoresContainer {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    border-radius: 0%;
-    border: none;
-    border-top: 2px solid #fff;
-    background-color: var(--background-theme);
+  .RecentScores {
+    display: none;
   }
 
   .QuizSelect {
@@ -398,34 +403,28 @@
   .HomeNav {
     display: flex;
     flex-direction: row;
+    align-items: center;
     min-height: 8%;
     background-color: var(--background-theme);
     border-bottom: 2px solid #fff;
   }
 
-  .RecentScores {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
+  .HomeNavbar {
+    position: relative;
+    padding-top: 0rem;
+    padding-left: 2rem;
     color: #fff;
   }
 
-  .RecentScores h1 {
-    margin-top: 2rem;
+  .MenuNavbar {
+    position: relative;
+    padding-top: 0rem;
+    padding-right: 2rem;
+    color: #fff;
   }
 
-  .RecentScoresContainer {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    border-radius: 0%;
-    border: none;
-    border-top: 2px solid #fff;
-    background-color: var(--background-theme);
+  .RecentScores {
+    display: none;
   }
 
   .QuizSelect {

@@ -37,45 +37,78 @@ export default function HomeRecentScores() {
     GetRecentScores(loginUsername);
   }, []);
 
+  const CreateTable = () => {
+    const tableArray = [];
+    for (let index = 0; index < 10; index++) {
+      if (myScores[index]) {
+        var quizDate = new Date(myScores[index].createdAt);
+        var category = myScores[index].category
+          .replaceAll("_", " ")
+          .split(" ")
+          .map((word) => {
+            return word.charAt(0).toUpperCase() + word.slice(1);
+          })
+          .join(" ");
+        var difficulty =
+          myScores[index].difficulty.charAt(0).toUpperCase() +
+          myScores[index].difficulty.slice(1);
+        tableArray.push(
+          <div className="HomeTableScoreRow" key={index}>
+            <div className="HomeTableCell">{quizDate.toLocaleDateString()}</div>
+            <div className="HomeTableCell">{category}</div>
+            <div className="HomeTableCell">{difficulty}</div>
+            <div className="HomeTableCell">{myScores[index].score}/10</div>
+          </div>
+        );
+      } else {
+        tableArray.push(<div></div>);
+      }
+    }
+    return tableArray;
+  };
+
   return (
     <section className="RecentScores">
       <div className="RecentScoresContainer">
         <h1>Recent Scores</h1>
         <div className="RecentScoresBox">
           <div className="RecentScoresTable">
-            <div className="HomeTableHeaderRow">
+            <div
+              className="HomeTableHeaderRow"
+              onClick={() => {
+                CreateTable();
+              }}
+            >
               <div className="HomeHeaderCell HomeTableCell">Date</div>
               <div className="HomeHeaderCell HomeTableCell">Category</div>
               <div className="HomeHeaderCell HomeTableCell">Difficulty</div>
               <div className="HomeHeaderCell HomeTableCell">Score</div>
             </div>
-            {!isLoading &&
-              myScores.map((score, index) => {
-                var quizDate = new Date(score.createdAt);
-                var category = score.category
-                  .replaceAll("_", " ")
-                  .split(" ")
-                  .map((word) => {
-                    return word.charAt(0).toUpperCase() + word.slice(1);
-                  })
-                  .join(" ");
-                var difficulty =
-                  score.difficulty.charAt(0).toUpperCase() +
-                  score.difficulty.slice(1);
-                return (
-                  <div className="HomeTableScoreRow" key={index}>
-                    <div className="HomeTableCell">
-                      {quizDate.toLocaleDateString()}
-                    </div>
-                    <div className="HomeTableCell">{category}</div>
-                    <div className="HomeTableCell">{difficulty}</div>
-                    <div className="HomeTableCell">{score.score}/10</div>
-                  </div>
-                );
-              })}
+            {!isLoading && CreateTable()}
           </div>
         </div>
       </div>
     </section>
   );
 }
+
+// myScores.map((score, index) => {
+//   var quizDate = new Date(score.createdAt);
+//   var category = score.category
+//     .replaceAll("_", " ")
+//     .split(" ")
+//     .map((word) => {
+//       return word.charAt(0).toUpperCase() + word.slice(1);
+//     })
+//     .join(" ");
+//   var difficulty =
+//     score.difficulty.charAt(0).toUpperCase() + score.difficulty.slice(1);
+//   return (
+//     <div className="HomeTableScoreRow" key={index}>
+//       <div className="HomeTableCell">{quizDate.toLocaleDateString()}</div>
+//       <div className="HomeTableCell">{category}</div>
+//       <div className="HomeTableCell">{difficulty}</div>
+//       <div className="HomeTableCell">{score.score}/10</div>
+//     </div>
+//   );
+// });
